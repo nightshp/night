@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DeliverMapper">
+  <resultMap id="BaseResultMap" type="entity.Deliver">
+    <id column="deliver_id" jdbcType="INTEGER" property="deliverId" />
+    <result column="deliver_name" jdbcType="VARCHAR" property="deliverName" />
+    <result column="deliver_phone" jdbcType="VARCHAR" property="deliverPhone" />
+    <result column="home_addr" jdbcType="VARCHAR" property="homeAddr" />
+    <result column="employ_date" jdbcType="DATE" property="employDate" />
+    <result column="restaur_id" jdbcType="INTEGER" property="restaurId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from deliver
+    where deliver_id = #{deliverId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Deliver">
+    insert into deliver (deliver_id, deliver_name, deliver_phone, 
+      home_addr, employ_date, restaur_id
+      )
+    values (#{deliverId,jdbcType=INTEGER}, #{deliverName,jdbcType=VARCHAR}, #{deliverPhone,jdbcType=VARCHAR}, 
+      #{homeAddr,jdbcType=VARCHAR}, #{employDate,jdbcType=DATE}, #{restaurId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="entity.Deliver">
+    update deliver
+    set deliver_name = #{deliverName,jdbcType=VARCHAR},
+      deliver_phone = #{deliverPhone,jdbcType=VARCHAR},
+      home_addr = #{homeAddr,jdbcType=VARCHAR},
+      employ_date = #{employDate,jdbcType=DATE},
+      restaur_id = #{restaurId,jdbcType=INTEGER}
+    where deliver_id = #{deliverId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select deliver_id, deliver_name, deliver_phone, home_addr, employ_date, restaur_id
+    from deliver
+    where deliver_id = #{deliverId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select deliver_id, deliver_name, deliver_phone, home_addr, employ_date, restaur_id
+    from deliver
+  </select>
+</mapper>

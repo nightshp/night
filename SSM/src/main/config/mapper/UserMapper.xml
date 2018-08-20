@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+  <resultMap id="BaseResultMap" type="entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.User">
+    insert into user (user_name, user_pwd,
+    email, phone, sex, pic)
+    values (#{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},#{pic,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="entity.User">
+    update user
+    set email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updatePic" parameterType="entity.User">
+    update user
+    set pic = #{pic,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select user_id, user_name, user_pwd, email, phone, sex, pic
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select user_id, user_name, user_pwd, email, phone, sex ,pic
+    from user
+  </select>
+  <select id="selectUsername" resultMap="BaseResultMap">
+    select * from user where user_name=#{userName} and user_pwd = #{userPwd}
+  </select>
+
+</mapper>
