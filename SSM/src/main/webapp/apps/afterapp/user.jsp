@@ -9,7 +9,6 @@
 <title>个人中心</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/user.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript">
@@ -69,7 +68,7 @@
         $("#address").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/address.jsp",
+                url:"${pageContext.request.contextPath}/selectAddresses?id=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",
@@ -104,7 +103,7 @@
                     	<li><a id="my" style="cursor: pointer;">用户信息</a></li>
                         <li><a id="shopcar" style="cursor: pointer;">我的购物车</a></li>
                         <li><a id="repwd" style="cursor: pointer;">修改密码</a></li>
-                        <li><a id="book" style="cursor: pointer;">我的留言</a></li>
+                        <li><a id="book" style="cursor: pointer;">我的订单</a></li>
                         <li><a id="address" style="cursor: pointer;">收货地址</a></li>
                     </ul>
                 </div>

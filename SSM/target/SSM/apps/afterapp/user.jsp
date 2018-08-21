@@ -9,7 +9,6 @@
 <title>个人中心</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/user.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript">
@@ -69,7 +68,7 @@
         $("#address").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/address.jsp",
+                url:"${pageContext.request.contextPath}/selectAddresses?id=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",

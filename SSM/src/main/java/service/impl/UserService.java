@@ -38,7 +38,13 @@ public class UserService  implements IUserService {
 	public int updateByPrimaryKey(String email,String phone,String sex,Integer id) {
 		return userMapper.updateByPrimaryKey(email,phone,sex,id);
 	}
-//实现登录
+
+    @Override
+    public int updateUsers(User user) {
+        return userMapper.updateUsers(user);
+    }
+
+    //实现登录
 	@Override
 	public User selectUsername(String userName, String userPwd) {
 		return userMapper.selectUsername(userName,userPwd);
@@ -47,6 +53,11 @@ public class UserService  implements IUserService {
     @Override
     public int updatePic(Integer id, String pic) {
         return userMapper.updatePic(id,pic);
+    }
+
+    @Override
+    public int updatePwd(Integer id, String pwd) {
+        return userMapper.updatePwd(id, pwd);
     }
 
 }

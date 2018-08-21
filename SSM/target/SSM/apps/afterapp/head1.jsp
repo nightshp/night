@@ -60,8 +60,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"> </div>
     </div>
-    <div style="position: absolute;right: 40px;top: 50px">
+    <div style="position: absolute;right: 30px;top: 50px">
         <p>欢迎您:${logUser.userName}</p>
+    </div>
+    <div style="position: absolute;right: 40px;top: 70px;cursor: pointer;">
+        <a href="${pageContext.request.contextPath}/logout">退出</a>
     </div>
 </div>
 <!-- header -->

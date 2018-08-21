@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import service.IUserService;
 
@@ -66,17 +67,20 @@ public class UserController {
 	}
 
 	//点击页面的保存修改
-//	@RequestMapping("/update")
-//	@ResponseBody
-//	public String updateUser(@ModelAttribute User user) {
-//		/*if(userService.updateUser(user)>0){
-//			System.out.println("修改用户成功");
-//			return "ok";
-//		}else{
-//			return "error";
-//		}*/
-//		return userService.updateByPrimaryKey(user) > 0 ? "ok" : "error";
-//	}
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateUser(@ModelAttribute User user,Model model) {
+		if(userService.updateUsers(user)>0){
+			System.out.println("修改用户成功");
+            System.out.println(user);
+            user=getUserById(user.getUserId(),model);
+			model.addAttribute("logUser",user);
+			return "ok";
+		}else{
+			return "error";
+		}
+//		return userService.updateUsers(user) > 0 ? "ok" : "error";
+	}
     //登录
 	@RequestMapping("/login")
 	public String login(@RequestParam(value = "username") String name, @RequestParam(value = "password") String pwd, Model model) {
@@ -99,9 +103,16 @@ public class UserController {
         }
         return "error";
     }
+    //注销用户
+    @RequestMapping("/logout")
+    public String logout(SessionStatus sessionStatus){
+	    sessionStatus.setComplete();
+	    return "app/index";
+    }
+
     //完善用户信息
     @RequestMapping("/updateById")
-    public String updateById(String email,String sex,String phone,User user,Integer id){
+    public String updateById(String email,String sex,String phone,Integer id){
 	    userService.updateByPrimaryKey(email,phone,sex,id);
 	    return "success";
     }
@@ -128,4 +139,18 @@ public class UserController {
         model.addAttribute("logUser",user);
         return "success1";
     }
+    //根据id修改密码
+    @RequestMapping("/editPwd")
+    @ResponseBody
+    public String editPwd(Integer id,String pwd,Model model,User user){
+        if(userService.updatePwd(id, pwd)>0){
+            System.out.println("修改密码成功");
+            user=getUserById(id,model);
+            model.addAttribute("logUser",user);
+            return "ok";
+        }else{
+            return "error";
+        }
+    }
+
 }
