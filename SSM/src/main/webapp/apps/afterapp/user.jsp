@@ -29,7 +29,7 @@
         $("#shopcar").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/shopcar.jsp",
+                url:"${pageContext.request.contextPath}/selectShops?userId=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",
@@ -55,7 +55,7 @@
         $("#book").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/book.jsp",
+                url:"${pageContext.request.contextPath}/selectOrders?userId=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",

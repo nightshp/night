@@ -17,6 +17,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
     <script src="${pageContext.request.contextPath}/js/login-register.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+    <script type="text/javascript">
+            function logajax() {
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/login",
+                    data:$("#form1").serialize(),
+                    type:"POST",
+                    success:function (data) {
+                        if (data == 'ok') {
+                            alert("登录成功");
+                            window.location.replace("${pageContext.request.contextPath}/selectMenus");
+                        }
+                        else {
+                            alert("用户名或密码错误");
+                        }
+                    },
+                    error:function () {
+                        alert("请求错误");
+                    }
+                });
+            }
+    </script>
 </head>
 <body>
 <!-- header -->
@@ -31,10 +52,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="head-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/apps/app/index.jsp">首页</a></li>
-                    <li><a href="${pageContext.request.contextPath}/apps/app/resturants.jsp">餐厅</a></li>
+                    <li><a href="${pageContext.request.contextPath}/selectAllMenu">首页</a></li>
+                    <li><a href="${pageContext.request.contextPath}/selectRes">餐厅</a></li>
                     <li><a href="${pageContext.request.contextPath}/apps/app/index.jsp" data-toggle="modal" onclick="openLoginModal()">个人中心</a></li>
-                    <li><a href="${pageContext.request.contextPath}/afterapp/contact.jsp" data-toggle="modal" onclick="openLoginModal()">联系我们</a></li>
+                    <li><a href="${pageContext.request.contextPath}/apps/app/contact.jsp" data-toggle="modal" onclick="openLoginModal()">联系我们</a></li>
                     <div class="clearfix"> </div>
                 </ul>
                 <!-- script-for-nav -->
@@ -49,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="header-right1">
                 <div class="cart box_1">
-                    <a href="checkout.jsp">
+                    <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal()">
                         <h3> <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="${pageContext.request.contextPath}/images/bag.png" alt=""></h3>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
@@ -86,10 +107,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="error"></div>
                             <div class="form loginBox">
-                                <form method="post" action="${pageContext.request.contextPath}/login" accept-charset="UTF-8">
+                                <form  id="form1"accept-charset="UTF-8">
                                     <input id="name" class="form-control" type="text" placeholder="用户名" name="username">
                                     <input id="pwd" class="form-control" type="password" placeholder="密码" name="password">
-                                    <input class="btn btn-default btn-login" type="submit" value="登录">
+                                    <input class="btn btn-default btn-login" type="button" value="登录" onclick="logajax()">
                                 </form>
                             </div>
                         </div>

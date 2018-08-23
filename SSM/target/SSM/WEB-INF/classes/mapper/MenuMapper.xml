@@ -41,4 +41,8 @@
     select dish_id, dish_name, dish_pric, dish_discribe, dish_class, dish_pic, restaur_id
     from menu
   </select>
+  <select id="selectMenus" resultMap="BaseResultMap">
+    select dish_id, dish_name, dish_pric, dish_discribe, dish_class, dish_pic, restaur_id
+    from menu where restaur_id=#{restaurId,jdbcType=INTEGER}
+  </select>
 </mapper>

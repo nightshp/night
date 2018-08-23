@@ -20,4 +20,6 @@ public interface AddressMapper {
     int updateDefault(@Param(value = "addressId") Integer addressId,@Param(value ="isdefault") Integer isdefault);
     //查出除默认地址外其他地址
     List<Address> selectNotDefault(@Param(value = "userId") Integer userId,@Param(value = "addressId") Integer addressId);
+    //根据isdefault和userid查出地址信息
+    Address selectDefU(@Param(value = "isdefault")Integer isdefault,@Param(value = "userId")Integer userId);
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrdersMapper">
+  <resultMap id="BaseResultMap" type="entity.Orders">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="send_addr" jdbcType="VARCHAR" property="sendAddr" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Orders">
+       insert into orders (order_status, user_id,
+       order_date, end_date,
+      send_addr)
+    values ( #{orderStatus,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+      NOW(), DATE_ADD(order_date,INTERVAL "1 1" DAY_HOUR),
+      #{sendAddr,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="entity.Orders">
+    update orders
+    set order_status = #{orderStatus,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP},
+      send_addr = #{sendAddr,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select order_id, order_status, user_id, order_date, end_date, send_addr
+    from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select order_id, order_status, user_id, order_date, end_date, send_addr
+    from orders where user_id=#{userId,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -71,4 +71,17 @@ public class Menu {
     public void setRestaurId(Integer restaurId) {
         this.restaurId = restaurId;
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "dishId=" + dishId +
+                ", dishName='" + dishName + '\'' +
+                ", dishPric=" + dishPric +
+                ", dishDiscribe='" + dishDiscribe + '\'' +
+                ", dishClass='" + dishClass + '\'' +
+                ", dishPic='" + dishPic + '\'' +
+                ", restaurId=" + restaurId +
+                '}';
+    }
 }

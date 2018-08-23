@@ -19,4 +19,6 @@ public interface IAddressService {
     int updateDefault(Integer addressId,Integer isdefault);
     //查出除默认地址外其他地址
     List<Address> selectNotDefault(Integer userId,Integer addressId);
+    //根据isdefault和userid查出地址信息
+    Address selectDefU(Integer isdefault,Integer userId);
 }

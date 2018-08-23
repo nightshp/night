@@ -25,16 +25,33 @@
         });
     }
 
-    function updateUser(form) {
-        $.post("${pageContext.request.contextPath}/update", $(form).serialize(), function (data) {
-            if (data == 'ok') {
-                alert("用户更新成功！");
-                setTimeout(function () {
+    function updateUser() {
+        <%--$.post("${pageContext.request.contextPath}/update", $(form).serialize(), function (data) {--%>
+            <%--if (data == 'ok') {--%>
+                <%--alert("用户更新成功！");--%>
+                <%--setTimeout(function () {--%>
+                    <%--window.location.reload();--%>
+                <%--}, 3000);--%>
+            <%--}--%>
+            <%--else {--%>
+                <%--alert("修改失败");--%>
+            <%--}--%>
+        <%--});--%>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/update",
+            data:$("#form1").serialize(),
+            type:"POST",
+            success:function (data) {
+                if (data == 'ok') {
+                    alert("用户更新成功");
                     window.location.reload();
-                }, 3000);
-            }
-            else {
-                alert("修改失败");
+                }
+                else {
+                    alert("修改失败");
+                }
+            },
+            error:function () {
+                alert("请求错误");
             }
         });
     }
@@ -65,7 +82,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">修改个人信息</h4>
             </div>
-            <form method="post" onsubmit="return updateUser(this)" id="form1">
+            <form  onsubmit="updateUser()" id="form1">
             <div class="modal-body">
                 <table class="table">
                     <tbody style="font-size: 15px">

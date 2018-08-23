@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="head1.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,95 +36,93 @@
 							</div>
 							<div class="clearfix"> </div>
 						</div>
+						<form action="${pageContext.request.contextPath}/selectByNAs" method="post">
 						<ul>
 							<li class="span1_of_1">
 								 <!----------start section_room----------->
-								 <form>
-									<input type="text" class="textbox" value="Resturant Name" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Resturant Name';}">
-								</form>
+									<input name="restaurName"type="text" class="textbox" value="餐厅名字" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '餐厅名字';}">
 							 </li>	
 							<li class="span1_of_1">
 								 <!----------start section_room----------->
 								 <div class="section_room">
-									  <select id="country" onChange="change_country(this.value)" class="frm-field required">
-											<option value="null">Enter City Name</option>
-											<option value="null">popular areas</option>         
-											<option value="AX">Maroubra</option>
-											<option value="AX">Ultimo</option>
+									  <select name="restaurAddress" onChange="change_country(this.value)" class="frm-field required">
+											<option>安州区</option>
+											<option>文苑路</option>
+											<option>辽宁大道</option>
+											<option>园艺山</option>
+										  	<option>涪城区</option>
 									  </select>
 								 </div>	
 							 </li>				  
 							 <li class="span1_of_3">
 									<div class="date_btn">
-										<form action="resturants.jsp">
-											<input type="submit" value="Find resturants">
+										<form>
+											<input type="submit" class="btn-danger btn-lg" value="搜索">
 										</form>
 									</div>
 							 </li>
 								<div class="clearfix"></div>
 						</ul>
+						</form>
 					</div>
 				</div>	
 			</div>
 	</div>
 	</div>
-<!-- banner -->	
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >免费网站模板</a></div>
+<!-- banner -->
 <!-- latis -->	
 	<div class="latis">
 		<div class="container">
-		<div class="col-md-4 latis-left">
-			<h3>Maecenas ornare enim</h3>
-			<img src="${pageContext.request.contextPath}/images/4.jpg" class="img-responsive" alt="">
-			<div class="special-info grid_1 simpleCart_shelfItem">
-				<p>Cum sociis natodiculus mus.rhoncus egestas ac sit </p>
-				<div class="cur">
-					<div class="cur-left">
-						<div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in" href="#">Add to cart</a></span></div>
+			<c:forEach items="${pageinfo.list}" var="menu">
+				<div class="col-md-4 latis-left">
+					<h3>${menu.dishName}</h3>
+					<img src="/uploads/${menu.dishPic}" class="img-responsive" style="height: 280px">
+					<div class="special-info grid_1 simpleCart_shelfItem">
+						<div style="height: 60px"><p>${menu.dishDiscribe}</p></div>
+						<div class="cur">
+							<div class="cur-left">
+								<div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in" href="${pageContext.request.contextPath}/insertShop?dishId=${menu.dishId}&userId=${logUser.userId}">加入餐车</a></span></div>
+							</div>
+							<div class="cur-right">
+								<div class="item_add"><span class="item_price"><h6>${menu.dishPric}&yen;</h6></span></div>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
 					</div>
-					<div class="cur-right">
-						<div class="item_add"><span class="item_price"><h6>only $45.00</h6></span></div>
-					</div>
-						<div class="clearfix"> </div>
 				</div>
+			</c:forEach>
+		</div>
+
+		<div class="row">
+			<!-- 分页条信息 -->
+			<div style="text-align:center">
+				<nav aria-label="Page navigation">
+					<ul class="pagination">
+						<li><a href="${pageContext.request.contextPath}/selectMenus?pn=1">首页</a></li>
+						<c:if test="${pageinfo.hasPreviousPage}">
+							<li><a href="${pageContext.request.contextPath}/selectMenus?pn=${pageinfo.pageNum-1}"
+								   aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach items="${pageinfo.navigatepageNums}" var="page_Num">
+							<c:if test="${page_Num == pageinfo.pageNum}">
+								<li class="active"><a href="#">${page_Num}</a></li>
+							</c:if>
+							<c:if test="${page_Num != pageinfo.pageNum}">
+								<li><a href="${pageContext.request.contextPath}/selectMenus?pn=${page_Num}">${page_Num}</a></li>
+							</c:if>
+
+						</c:forEach>
+						<c:if test="${pageinfo.hasNextPage}">
+							<li><a href="${pageContext.request.contextPath}/selectMenus?pn=${pageinfo.pageNum+1}"
+								   aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</c:if>
+						<li><a href="${pageContext.request.contextPath}/selectMenus?pn=${pageinfo.pages}">末页</a></li>
+					</ul>
+				</nav>
 			</div>
 		</div>
-		<div class="col-md-4 latis-left">
-			<h3>Dis parturient montes</h3>
-			<img src="${pageContext.request.contextPath}/images/1.jpg" class="img-responsive" alt="">
-			<div class="special-info grid_1 simpleCart_shelfItem">
-				<p>Cum sociis natodiculus mus.rhoncus egestas ac sit </p>
-				<div class="cur">
-					<div class="cur-left">
-						<div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in" href="#">Add to cart</a></span></div>
-					</div>
-					<div class="cur-right">
-						<div class="item_add"><span class="item_price"><h6>only $55.00</h6></span></div>
-					</div>
-						<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 latis-left">
-			<h3>Curabitur congue blandit</h3>
-			<img src="${pageContext.request.contextPath}/images/3.jpg" class="img-responsive" alt="">
-			<div class="special-info grid_1 simpleCart_shelfItem">
-				<p>Cum sociis natodiculus mus.rhoncus egestas ac sit </p>
-				<div class="cur">
-					<div class="cur-left">
-						<div class="item_add"><span class="item_price"><a class="morebtn hvr-rectangle-in" href="#">Add to cart</a></span></div>
-					</div>
-					<div class="cur-right">
-						<div class="item_add"><span class="item_price"><h6>only $65.00</h6></span></div>
-					</div>
-						<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-			<div class="clearfix"> </div>
-			
-				
-	</div>
 	</div>
 <!-- latis -->	
 <!-- feature -->

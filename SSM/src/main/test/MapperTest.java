@@ -1,7 +1,8 @@
-import dao.AddressMapper;
-import dao.UserMapper;
-import entity.Address;
-import entity.User;
+import dao.MenuMapper;
+import dao.RestaurantMapper;
+import dao.ShopcarMapper;
+import entity.Menu;
+import entity.Restaurant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ import java.util.List;
 public class MapperTest {
     @Autowired
 //    UserMapper userMapper;
-    AddressMapper addressMapper;
+//    AddressMapper addressMapper;
+//      RestaurantMapper restaurantMapper;
+//    MenuMapper menuMapper;
+    ShopcarMapper shopcarMapper;
     @Test
     public void testCRUD(){
 //        System.out.println(userMapper);
@@ -23,10 +27,11 @@ public class MapperTest {
 //        System.out.println(users);
 //        int i=userMapper.insert(new User("赵六","123",null,null,null,"1.jpg"));
 //        System.out.println(i);
-        List<Address>addresses=addressMapper.selectAll(1);
-        for (Address address:addresses
-             ) {
-            System.out.println(address);
-        }
+//        List<Menu>menus=menuMapper.selectAll();
+//        for (Menu menu:menus
+//             ) {
+//            System.out.println(menu);
+//        }
+        System.out.println(shopcarMapper.calcuPric(1));
     }
 }

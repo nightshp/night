@@ -46,4 +46,9 @@ public class AddressService implements IAddressService {
     public List<Address> selectNotDefault(Integer userId, Integer addressId) {
         return addressMapper.selectNotDefault(userId,addressId);
     }
+
+    @Override
+    public Address selectDefU(Integer isdefault, Integer userId) {
+        return addressMapper.selectDefU(isdefault,userId);
+    }
 }

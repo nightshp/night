@@ -29,7 +29,7 @@
         $("#shopcar").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/shopcar.jsp",
+                url:"${pageContext.request.contextPath}/selectShops?userId=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",
@@ -55,7 +55,7 @@
         $("#book").click(function(){
             $.ajax({
                 type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/book.jsp",
+                url:"${pageContext.request.contextPath}/selectOrders?userId=${logUser.userId}",
                 dataType:"html",
                 async:true,
                 contentType:"application/json",
@@ -103,7 +103,7 @@
                     	<li><a id="my" style="cursor: pointer;">用户信息</a></li>
                         <li><a id="shopcar" style="cursor: pointer;">我的购物车</a></li>
                         <li><a id="repwd" style="cursor: pointer;">修改密码</a></li>
-                        <li><a id="book" style="cursor: pointer;">我的留言</a></li>
+                        <li><a id="book" style="cursor: pointer;">我的订单</a></li>
                         <li><a id="address" style="cursor: pointer;">收货地址</a></li>
                     </ul>
                 </div>

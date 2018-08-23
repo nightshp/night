@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
     <script src="${pageContext.request.contextPath}/js/login-register.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
 <!-- header -->
@@ -31,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="head-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/apps/afterapp/index.jsp">首页</a></li>
-                    <li><a href="${pageContext.request.contextPath}/apps/afterapp/resturants.jsp">餐厅</a></li>
+                    <li><a href="${pageContext.request.contextPath}/selectMenus">首页</a></li>
+                    <li><a href="${pageContext.request.contextPath}/selectRestaurants">餐厅</a></li>
                     <li><a href="${pageContext.request.contextPath}/apps/afterapp/user.jsp">个人中心</a></li>
                     <li><a href="${pageContext.request.contextPath}/apps/afterapp/contact.jsp">联系我们</a></li>
                     <div class="clearfix"> </div>
@@ -60,10 +61,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"> </div>
     </div>
-    <div style="position: absolute;right: 30px;top: 50px">
-        <p>欢迎您:${logUser.userName}</p>
+    <div style="position: absolute;right: 30px;top: 30px">
+        <p><img src="/uploads/${logUser.pic}" class="img-circle" style="width: 40px;height: 40px"></p>
     </div>
-    <div style="position: absolute;right: 40px;top: 70px;cursor: pointer;">
+    <div style="position: absolute;right: 35px;top: 70px;cursor: pointer;">
         <a href="${pageContext.request.contextPath}/logout">退出</a>
     </div>
 </div>

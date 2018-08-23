@@ -6,9 +6,10 @@
     <result column="restaur_name" jdbcType="VARCHAR" property="restaurName" />
     <result column="restaur_address" jdbcType="VARCHAR" property="restaurAddress" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="range" jdbcType="VARCHAR" property="range" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="restaur_range" jdbcType="VARCHAR" property="restaurRange" />
+    <result column="restaur_describe" jdbcType="VARCHAR" property="restaurDescribe" />
     <result column="fee" jdbcType="INTEGER" property="fee" />
+    <result column="restaur_pic" jdbcType="VARCHAR" property="restaurPic" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from restaurant
@@ -16,29 +17,37 @@
   </delete>
   <insert id="insert" parameterType="entity.Restaurant">
     insert into restaurant (restaur_id, restaur_name, restaur_address, 
-      phone, range, describe, 
-      fee)
+      phone, restaur_range, restaur_describe, 
+      fee, restaur_pic)
     values (#{restaurId,jdbcType=INTEGER}, #{restaurName,jdbcType=VARCHAR}, #{restaurAddress,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{range,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
-      #{fee,jdbcType=INTEGER})
+      #{phone,jdbcType=VARCHAR}, #{restaurRange,jdbcType=VARCHAR}, #{restaurDescribe,jdbcType=VARCHAR}, 
+      #{fee,jdbcType=INTEGER}, #{restaurPic,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="entity.Restaurant">
     update restaurant
     set restaur_name = #{restaurName,jdbcType=VARCHAR},
       restaur_address = #{restaurAddress,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      range = #{range,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
-      fee = #{fee,jdbcType=INTEGER}
+      restaur_range = #{restaurRange,jdbcType=VARCHAR},
+      restaur_describe = #{restaurDescribe,jdbcType=VARCHAR},
+      fee = #{fee,jdbcType=INTEGER},
+      restaur_pic = #{restaurPic,jdbcType=VARCHAR}
     where restaur_id = #{restaurId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select restaur_id, restaur_name, restaur_address, phone, range, describe, fee
+    select restaur_id, restaur_name, restaur_address, phone, restaur_range, restaur_describe, 
+    fee, restaur_pic
     from restaurant
     where restaur_id = #{restaurId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select restaur_id, restaur_name, restaur_address, phone, range, describe, fee
+    select restaur_id, restaur_name, restaur_address, phone, restaur_range, restaur_describe, 
+    fee, restaur_pic
     from restaurant
+  </select>
+  <select id="selectByNA" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select restaur_id, restaur_name, restaur_address, phone, restaur_range, restaur_describe,
+    fee, restaur_pic
+    from restaurant where restaur_name like concat("%",#{restaurName,jdbcType=VARCHAR},"%") and restaur_address like concat("%",#{restaurAddress,jdbcType=VARCHAR},"%")
   </select>
 </mapper>

@@ -31,16 +31,6 @@ public class UserController {
 		return "userlist";
 	}
 
-	/**
-	 * 如果是启动项目，则转发到list请求
-	 * 如果是项目，默认到首页的请求
-	 *
-	 * @return
-	 */
-	@RequestMapping("/")
-	public String index() {
-		return "forward:/list";
-	}
 
 	//响应页面的删除
 	@RequestMapping("/delete")
@@ -83,13 +73,17 @@ public class UserController {
 	}
     //登录
 	@RequestMapping("/login")
+	@ResponseBody
 	public String login(@RequestParam(value = "username") String name, @RequestParam(value = "password") String pwd, Model model) {
+		System.out.println(name);
+		System.out.println("sdsdsdsdd");
 		User user=userService.selectUsername(name,pwd);//根据用户名和密码查询出来的数据存在对象中
 		if(user!=null) {                                  //如果对象中有数据则返回到界面
 			model.addAttribute("logUser",user);
-			return "afterapp/index";
+			return "ok";
 		}
-		return "app/index";
+
+		return "error";
 	}
 	//注册
     @RequestMapping("/register")

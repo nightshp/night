@@ -1,97 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>留言</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css"/>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
+<title>订单</title>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
+    <script type="text/javascript">
+        function deleteOrder(id) {
+            if (confirm('确实要删除该订单吗?')) {
+                var url = "${pageContext.request.contextPath}/deleteOrder";
+                var args = {"orderId": id};
+                $.post(url, args, function (data) {
+                    if (data == 'ok') {
+                        alert("删除订单成功！");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("删除失败");
+                    }
 
+                });
+            }
+        }
+    </script>
 </head>
 
 <body>
 <div class="space_hx">&nbsp;</div>
-<div class="scd">
-    <div class="user clearfix">
-        <div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
-            <div class="user_m clearfix">
-            	<ul class="u_ml book">
-                	<li class="clearfix sex">
-                    	<span class="title">留言类型：</span>
-                        <div class="li_m">
-                        	<input name="ly" type="radio" value="" id="s1" checked>
-                            <span><label for="s1">留言</label></span>
-                            <input name="ly" type="radio" value="" id="s2">
-                            <span><label for="s2">投诉</label></span>
-                            <input name="ly" type="radio" value="" id="s3">
-                            <span><label for="s3">售后</label></span>
-                            <input name="ly" type="radio" value="" id="s4">
-                            <span><label for="s4">求购</label></span>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">标题：</span>
-                        <div class="li_m">
-                        	<input name="" type="text"><i>*</i>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">联系人：</span>
-                        <div class="li_m">
-                        	<input name="" type="text"><i>*</i>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">E-mail：</span>
-                        <div class="li_m">
-                        	<input name="" type="text"><i>*</i>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">单位名称：</span>
-                        <div class="li_m">
-                        	<input name="" type="text">
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">主页：</span>
-                        <div class="li_m">
-                        	<input name="" type="text">
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">电话：</span>
-                        <div class="li_m">
-                        	<input name="" type="text">
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">传真：</span>
-                        <div class="li_m">
-                        	<input name="" type="text">
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">内容：</span>
-                        <div class="li_m">
-                        	<textarea name="" cols="" rows=""></textarea>
-                            <i>*</i>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                    	<span class="title">&nbsp;</span>
-                        <div class="li_m">
-                        	<i class="f14">注：带*为必填项！</i>
-                        </div>
-                    </li>
-                    <li class="btn"><input name="" type="submit" value="提交"></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
+<div class="address">
+    <table class="ads_b" cellpadding="0" cellspacing="0">
+        <tr>
+            <th scope="col">订单ID</th>
+            <th scope="col">用户ID</th>
+            <th scope="col">下单时间</th>
+            <th scope="col">预计到达时间</th>
+            <th scope="col">收货地址</th>
+            <th scope="col">订单状态</th>
+            <th scope="col">操作</th>
+        </tr>
+        <c:forEach items="${orders}" var="ord" varStatus="status">
+            <tr>
+                <td>${ord.orderId}</td>
+                <td>${ord.userId}</td>
+                <td>${ord.orderDate}</td>
+                <td>${ord.endDate}</td>
+                <td>${ord.sendAddr}</td>
+                <c:if test="${ord.orderStatus==1}" var="rs">
+                    <td><span>已支付</span></td>
+                </c:if>
+                <c:if test="${ord.orderStatus==0}" var="rs">
+                    <td><td><span>未支付</span></td></td>
+                </c:if>
+                <td><a onclick="deleteOrder(${ord.orderId})" style="cursor: pointer">删除</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </div>
 <div class="space_hx">&nbsp;</div>
 </body>

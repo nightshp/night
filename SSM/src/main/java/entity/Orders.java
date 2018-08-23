@@ -2,15 +2,13 @@ package entity;
 
 import java.util.Date;
 
-public class Order {
+public class Orders {
 
     private Integer orderId;
 
     private Integer orderStatus;
 
     private Integer userId;
-
-    private Integer dishId;
 
     private Date orderDate;
 
@@ -40,14 +38,6 @@ public class Order {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Integer getDishId() {
-        return dishId;
-    }
-
-    public void setDishId(Integer dishId) {
-        this.dishId = dishId;
     }
 
     public Date getOrderDate() {

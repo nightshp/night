@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ShopcarMapper">
+  <resultMap id="BaseResultMap" type="entity.Shopcar">
+    <id column="shopcar_id" jdbcType="INTEGER" property="shopcarId" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="shop_pic" jdbcType="VARCHAR" property="shopPic" />
+    <result column="shop_price" jdbcType="INTEGER" property="shopPrice" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="shop_describe" jdbcType="VARCHAR" property="shopDescribe" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shopcar
+    where shopcar_id = #{shopcarId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteAllShop" parameterType="java.lang.Integer">
+    delete from shopcar
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Shopcar">
+    insert into shopcar (shop_name, shop_pic,
+      shop_price, user_id,shop_describe)
+    values (#{shopName,jdbcType=VARCHAR}, #{shopPic,jdbcType=VARCHAR},
+      #{shopPrice,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{shopDescribe,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="entity.Shopcar">
+    update shopcar
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_pic = #{shopPic,jdbcType=VARCHAR},
+      shop_price = #{shopPrice,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+       shop_describe = #{shopDescribe,jdbcType=VARCHAR}
+    where shopcar_id = #{shopcarId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select shopcar_id, shop_name, shop_pic, shop_price, user_id,shop_describe
+    from shopcar
+    where shopcar_id = #{shopcarId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select shopcar_id, shop_name, shop_pic, shop_price, user_id,shop_describe
+    from shopcar
+  </select>
+  <select id="selectShops" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select shopcar_id, shop_name, shop_pic, shop_price, user_id,shop_describe
+    from shopcar
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="calcuPric" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select COALESCE(SUM(shop_price),0)
+    from shopcar where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+</mapper>

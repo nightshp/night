@@ -10,11 +10,13 @@ public class Restaurant {
 
     private String phone;
 
-    private String range;
+    private String restaurRange;
 
-    private String describe;
+    private String restaurDescribe;
 
     private Integer fee;
+
+    private String restaurPic;
 
     public Integer getRestaurId() {
         return restaurId;
@@ -48,27 +50,55 @@ public class Restaurant {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getRange() {
-        return range;
+
+    public String getRestaurRange() {
+        return restaurRange;
     }
 
-    public void setRange(String range) {
-        this.range = range == null ? null : range.trim();
+
+    public void setRestaurRange(String restaurRange) {
+        this.restaurRange = restaurRange == null ? null : restaurRange.trim();
     }
 
-    public String getDescribe() {
-        return describe;
+
+    public String getRestaurDescribe() {
+        return restaurDescribe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+
+    public void setRestaurDescribe(String restaurDescribe) {
+        this.restaurDescribe = restaurDescribe == null ? null : restaurDescribe.trim();
     }
 
     public Integer getFee() {
         return fee;
     }
 
+
     public void setFee(Integer fee) {
         this.fee = fee;
+    }
+
+
+    public String getRestaurPic() {
+        return restaurPic;
+    }
+
+    public void setRestaurPic(String restaurPic) {
+        this.restaurPic = restaurPic == null ? null : restaurPic.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "restaurId=" + restaurId +
+                ", restaurName='" + restaurName + '\'' +
+                ", restaurAddress='" + restaurAddress + '\'' +
+                ", phone='" + phone + '\'' +
+                ", restaurRange='" + restaurRange + '\'' +
+                ", restaurDescribe='" + restaurDescribe + '\'' +
+                ", fee=" + fee +
+                ", restaurPic='" + restaurPic + '\'' +
+                '}';
     }
 }

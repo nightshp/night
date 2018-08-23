@@ -13,26 +13,43 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
     <script type="text/javascript">
-        function insertAddress(form) {
-            $.post("${pageContext.request.contextPath}/insertAddress?id=${logUser.userId}",$(form).serialize(),function (data) {
-                if (data=="ok"){
-                    alert("插入成功");
-                    setTimeout(function(){
-                        location.reload();
-                    },3000);
-                } else {
-                    alert("失败")
+        function insertAddress() {
+            <%--$.post("${pageContext.request.contextPath}/insertAddress?id=${logUser.userId}",$(form).serialize(),function (data) {--%>
+                <%--if (data=="ok"){--%>
+                    <%--alert("插入成功");--%>
+                    <%--setTimeout(function(){--%>
+                        <%--location.reload();--%>
+                    <%--},3000);--%>
+                <%--} else {--%>
+                    <%--alert("失败")--%>
+                <%--}--%>
+            <%--});--%>
+            $.ajax({
+                url:"${pageContext.request.contextPath}/insertAddress?id=${logUser.userId}",
+                data:$("#form1").serialize(),
+                type:"POST",
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("插入成功！");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("插入失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
                 }
             });
         }
 
         function deleteAddress(id) {
-            if (confirm('确实要删除该客户吗?')) {
+            if (confirm('确实要删除该地址吗吗?')) {
                 var url = "${pageContext.request.contextPath}/deleteAddress";
                 var args = {"id": id};
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
-                        alert("客户删除更新成功！");
+                        alert("删除更新成功！");
                         window.location.reload();
                     }
                     else {
@@ -58,16 +75,33 @@
             });
         }
 
-        function updateAddress(form) {
-            $.post("${pageContext.request.contextPath}/updateAddress?id=${logUser.userId}", $(form).serialize(), function (data) {
-                if (data == 'ok') {
-                    alert("地址更新成功！");
-                    setTimeout(function () {
+        function updateAddress() {
+            <%--$.post("${pageContext.request.contextPath}/updateAddress?id=${logUser.userId}", $(form).serialize(), function (data) {--%>
+                <%--if (data == 'ok') {--%>
+                    <%--alert("地址更新成功！");--%>
+                    <%--setTimeout(function () {--%>
+                        <%--window.location.reload();--%>
+                    <%--}, 3000);--%>
+                <%--}--%>
+                <%--else {--%>
+                    <%--alert("修改失败");--%>
+                <%--}--%>
+            <%--});--%>
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updateAddress?id=${logUser.userId}",
+                data:$("#form2").serialize(),
+                type:"POST",
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("地址更新成功！");
                         window.location.reload();
-                    }, 3000);
-                }
-                else {
-                    alert("修改失败");
+                    }
+                    else {
+                        alert("修改失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
                 }
             });
         }
@@ -81,7 +115,7 @@
     <div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
       <div class="user_m clearfix">
           <div class="address">
-              <form method="post" onsubmit="return insertAddress(this)" id="form1">
+              <form  onsubmit="insertAddress()" id="form1">
               <ul class="reg ads_a">
             	<li class="clearfix">
                 	<span class="title"><em>新增收货地址</em></span>
@@ -181,7 +215,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">修改地址信息</h4>
             </div>
-            <form id="form2" onsubmit="updateAddress(this)" >
+            <form id="form2" onsubmit="updateAddress()" >
                 <div class="modal-body">
                     <table class="table">
                         <tbody style="font-size: 15px">

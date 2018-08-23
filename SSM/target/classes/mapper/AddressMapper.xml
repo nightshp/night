@@ -54,4 +54,9 @@
     from address
     where address_id!=#{addressId,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER}
   </select>
+  <select id="selectDefU" resultMap="BaseResultMap">
+    select address_id, rec_name, area_address, deta_address, postalcode, phone,isdefault, user_id
+    from address
+    where isdefault=#{isdefault,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

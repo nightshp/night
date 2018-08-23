@@ -88,7 +88,7 @@ body a{
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 .banner {
-  background: url(../images/16.jpg) no-repeat;
+  background: url(../images/15.jpg) no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -630,17 +630,20 @@ a.simpleCart_empty {
 }
 li.im-g {
   float: left;
-  width: 12%;
 }
 li.data {
   float: left;
-  width: 50%;
+    margin-left: 20px;
+}
+li.rdata {
+    float: right;
+    margin-right: 20px;
 }
 li.bt-nn {
   float: right;
   width: 8%;
   margin: 3em 0;
-  text-align: right;
+  text-align: center;
 }
 .order-top {
   padding: 1.5em 0;
@@ -1268,7 +1271,6 @@ a.morebtn {
 }
 .pr-right {
   float: left;
-  width: 50%;
   margin: 0.6em 0;
 }
 .b_room input[type="text"] {
@@ -1565,7 +1567,7 @@ li.bt-nn {
 a.morebtn {
   font-size: 0.875em;
   background: #D96B66;
-  padding: 7px 10px;
+  /*padding: 7px 10px;*/
 }
 .latis h6 {
   font-size: 1.2em;
@@ -1770,7 +1772,7 @@ li.im-g {
   width: 31%;
 }
 li.bt-nn {
-  width: 15%;
+  width: 20%;
 }
 .login-left h3, .login-right h3 {
   font-size: 1.1em;
