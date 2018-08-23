@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import entity.Menu;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import service.IUserService;
+import service.impl.MenuService;
 
 @Controller
 @SessionAttributes({"logUser"})
 public class UserController {
 
-    private  User logUser = null;
-
 	@Autowired
 	private IUserService userService;
-
+	@Autowired
+	private MenuService menuService;
 	@RequestMapping("/list")
 	public String getUsers(Model model) {
 		List<User> users = userService.selectAll();
@@ -99,8 +100,12 @@ public class UserController {
     }
     //注销用户
     @RequestMapping("/logout")
-    public String logout(SessionStatus sessionStatus){
+    public String logout(SessionStatus sessionStatus,@RequestParam(value = "pn",defaultValue = "1")Integer pn, Model model){
 	    sessionStatus.setComplete();
+		PageHelper.startPage(pn,3);          //传入页码以及每页的大小
+		List<Menu> menus=menuService.selectAll();
+		PageInfo pageinfo=new PageInfo(menus);        //使用pageinfo包装结果集，只需将pageinfo交给页面
+		model.addAttribute("pageinfo",pageinfo);
 	    return "app/index";
     }
 

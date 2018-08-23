@@ -56,9 +56,7 @@
                             </li>
                             <li class="span1_of_3">
                                 <div class="date_btn">
-                                    <form>
-                                        <input class="btn btn-danger btn-lg" type="submit" value="搜索">
-                                    </form>
+                                    <input class="btn btn-danger btn-lg" type="submit" value="搜索">
                                 </div>
                             </li>
                             <div class="clearfix"></div>

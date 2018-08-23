@@ -6,6 +6,28 @@
 <html>
 <head>
 	<title>餐厅细节</title>
+	<script type="text/javascript">
+        function insertShop(id) {
+            $.ajax({
+                url:"${pageContext.request.contextPath}/insertShop",
+                data:{"dishId":id,"userId":${logUser.userId}},
+                type:"POST",
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("加入成功！");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("加入失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
+
+        }
+	</script>
 </head>
 <body>
 <!-- about -->
@@ -32,7 +54,7 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="pr-right">
-							<div ><span style="width: 100px"><a href="${pageContext.request.contextPath}/insertShop?dishId=${menu.dishId}&userId=${logUser.userId}">加入餐车</a></span></div>
+							<div ><span style="width: 100px"><a onclick="insertShop(${menu.dishId})" style="cursor: pointer">加入餐车</a></span></div>
 						</div>
 					</div>
 				</li>
