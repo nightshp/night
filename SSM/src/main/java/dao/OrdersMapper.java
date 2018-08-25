@@ -17,4 +17,7 @@ public interface OrdersMapper {
     List<Orders> selectAll(@Param(value = "userId")Integer userId);
 
     int updateByPrimaryKey(Orders orders);
+
+    //查询出所有订单
+    List<Orders> selectall();
 }

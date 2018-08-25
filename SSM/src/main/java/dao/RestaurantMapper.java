@@ -18,4 +18,6 @@ public interface RestaurantMapper {
     int updateByPrimaryKey(Restaurant restaurant);
     //根据restaurName和restaurAddress查询餐厅
     List<Restaurant> selectByNA(@Param(value = "restaurName") String restaurName, @Param(value = "restaurAddress") String restaurAddress);
+    //根据多字段进行模糊查询
+    List<Restaurant> selectByMany(@Param(value = "restaurName") String restaurName, @Param(value = "restaurAddress") String restaurAddress);
 }

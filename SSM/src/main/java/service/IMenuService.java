@@ -17,4 +17,6 @@ public interface IMenuService {
     int updateByPrimaryKey(Menu menu);
     //根据restaur_id查出某个餐厅的所有菜肴
     List<Menu> selectMenus(Integer restaurId);
+    //查询出所有restaurant的id
+    int[] selectRestaurId();
 }

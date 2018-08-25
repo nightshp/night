@@ -60,4 +60,14 @@ public class UserService  implements IUserService {
         return userMapper.updatePwd(id, pwd);
     }
 
+	@Override
+	public int updateUserinfo(User user) {
+		return userMapper.updateUserinfo(user);
+	}
+
+	@Override
+	public List<User> selectByName(String userName) {
+		return userMapper.selectByName(userName);
+	}
+
 }

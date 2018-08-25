@@ -58,5 +58,19 @@
   <select id="selectUsername" resultMap="BaseResultMap">
     select * from user where user_name=#{userName} and user_pwd = #{userPwd}
   </select>
-
+  <update id="updateUserinfo" parameterType="entity.User">
+    update user
+    set user_name=#{userName,jdbcType=VARCHAR},
+        user_pwd=#{userPwd,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        pic=#{pic,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_name, user_pwd, email, phone, sex, pic
+    from user
+    where user_name like concat("%",#{userName,jdbcType=VARCHAR},"%")
+  </select>
 </mapper>

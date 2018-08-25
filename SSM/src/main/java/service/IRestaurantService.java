@@ -17,4 +17,5 @@ public interface IRestaurantService {
     int updateByPrimaryKey(Restaurant restaurant);
     //根据restaurName和restaurAddress查询餐厅
     List<Restaurant> selectByNA(String restaurName,String restaurAddress);
+    List<Restaurant> selectByMany(String restaurName,String restaurAddress);
 }

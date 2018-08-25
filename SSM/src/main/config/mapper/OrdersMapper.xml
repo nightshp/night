@@ -39,4 +39,8 @@
     select order_id, order_status, user_id, order_date, end_date, send_addr
     from orders where user_id=#{userId,jdbcType=INTEGER}
   </select>
+  <select id="selectall" resultMap="BaseResultMap">
+    select order_id, order_status, user_id, order_date, end_date, send_addr
+    from orders
+  </select>
 </mapper>

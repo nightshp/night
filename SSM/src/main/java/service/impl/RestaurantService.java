@@ -41,4 +41,9 @@ public class RestaurantService implements IRestaurantService {
     public List<Restaurant> selectByNA(String restaurName, String restaurAddress) {
         return restaurantMapper.selectByNA(restaurName,restaurAddress);
     }
+
+    @Override
+    public List<Restaurant> selectByMany(String restaurName, String restaurAddress) {
+        return restaurantMapper.selectByMany(restaurName,restaurAddress);
+    }
 }

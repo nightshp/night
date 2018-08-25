@@ -50,4 +50,9 @@
     fee, restaur_pic
     from restaurant where restaur_name like concat("%",#{restaurName,jdbcType=VARCHAR},"%") and restaur_address like concat("%",#{restaurAddress,jdbcType=VARCHAR},"%")
   </select>
+  <select id="selectByMany" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select restaur_id, restaur_name, restaur_address, phone, restaur_range, restaur_describe,
+    fee, restaur_pic
+    from restaurant where restaur_name like concat("%",#{restaurName,jdbcType=VARCHAR},"%") or restaur_address like concat("%",#{restaurAddress,jdbcType=VARCHAR},"%")
+  </select>
 </mapper>

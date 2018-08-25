@@ -24,5 +24,9 @@ public interface UserMapper {
     int updatePic(@Param("userId")Integer id,@Param("pic")String pic);
     //根据id修改密码
     int updatePwd(@Param("userId")Integer id,@Param("userPwd")String pwd);
+    //修改信息包括图片上传
+    int updateUserinfo(User user);
+    //根据用户名实现搜索功能
+    List<User> selectByName(@Param("userName")String userName);
 
 }

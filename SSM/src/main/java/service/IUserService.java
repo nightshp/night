@@ -26,5 +26,9 @@ public interface IUserService {
     int updatePic(Integer id,String pic);
     //根据id修改密码
     int updatePwd(Integer id, String pwd);
+	//修改信息包括图片上传
+	int updateUserinfo(User user);
+	//根据用户名实现搜索功能
+	List<User> selectByName(String userName);
 	
 }

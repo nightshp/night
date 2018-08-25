@@ -45,4 +45,8 @@
     select dish_id, dish_name, dish_pric, dish_discribe, dish_class, dish_pic, restaur_id
     from menu where restaur_id=#{restaurId,jdbcType=INTEGER}
   </select>
+  <select id="selectRestaurId" resultType="java.lang.Integer">
+    select distinct (restaur_id)
+    from menu
+  </select>
 </mapper>

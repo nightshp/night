@@ -16,4 +16,6 @@ public interface IOrdersService {
     List<Orders> selectAll(Integer userId);
     //更新订单
     int updateByPrimaryKey(Orders orders);
+    //查询出所有订单
+    List<Orders> selectall();
 }

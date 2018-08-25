@@ -122,7 +122,7 @@ public class UserController {
         List<User>users=userService.selectAll();      //查询结果集
         PageInfo pageInfo=new PageInfo(users);        //使用pageinfo包装结果集，只需将pageinfo交给页面
         model.addAttribute("pageinfo",pageInfo);
-        return "lisr";
+        return "admin/user";
     }
     //图片上传
     @RequestMapping("/upload")
@@ -151,5 +151,52 @@ public class UserController {
             return "error";
         }
     }
+	//后台
+    //删除用户
+	@RequestMapping("/deleteUser")
+	@ResponseBody
+	public String deleteUser(Integer userId){
+		if (userService.deleteByPrimaryKey(userId)>0){
+			return "ok";
+		}
+		return "error";
+	}
+	//后台
+	//修改用户包括图片的上传
+	@RequestMapping("/updateUser")
+	@ResponseBody
+	public String updateUser(@ModelAttribute User user,@RequestParam(value = "file") MultipartFile file) throws IOException {
+		upload(user, file);
+		userService.updateUserinfo(user);
+		System.out.println("修改成功");
+		return "<script>alert('success');window.location.href='./getAll';</script>";
+	}
+
+	private void upload(@ModelAttribute User user, @RequestParam("file") MultipartFile file) throws IOException {
+		//获取文件名
+		String filename = file.getOriginalFilename();
+		//开始上传
+		file.transferTo(new File("E:/uploads/" + filename));
+		user.setPic(filename);
+	}
+
+	//后台
+	//添加用户
+	@RequestMapping("/insertUser")
+	@ResponseBody
+	public String insertUser(@ModelAttribute User user,@RequestParam(value = "file") MultipartFile file) throws IOException{
+		upload(user, file);
+		userService.insert(user);
+		System.out.println("添加成功");
+		return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+	}
+	//后台
+	//查询
+	@RequestMapping("/selectByKey")
+	public String selectByKey(String userName,Model model){
+		List<User>users=userService.selectByName(userName);
+		model.addAttribute("user",users);
+		return "admin/showuser";
+	}
 
 }

@@ -36,4 +36,9 @@ public class OrdersService implements IOrdersService {
     public int updateByPrimaryKey(Orders orders) {
         return ordersMapper.updateByPrimaryKey(orders);
     }
+
+    @Override
+    public List<Orders> selectall() {
+        return ordersMapper.selectall();
+    }
 }

@@ -41,4 +41,9 @@ public class MenuService implements IMenuService {
     public List<Menu> selectMenus(Integer restaurId) {
         return menuMapper.selectMenus(restaurId);
     }
+
+    @Override
+    public int[] selectRestaurId() {
+        return menuMapper.selectRestaurId();
+    }
 }
