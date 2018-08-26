@@ -20,4 +20,6 @@ public interface MenuMapper {
     List<Menu> selectMenus(@Param(value = "restaurId") Integer restaurId);
     //查询出所有restaurant的id
     int[] selectRestaurId();
+    //根据菜名和种类实现模糊查询
+    List<Menu> selectByNC(@Param(value = "dishName")String dishName,@Param(value = "dishClass")String dishClass);
 }

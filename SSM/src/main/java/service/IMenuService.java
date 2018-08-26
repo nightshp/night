@@ -1,6 +1,7 @@
 package service;
 
 import entity.Menu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface IMenuService {
     List<Menu> selectMenus(Integer restaurId);
     //查询出所有restaurant的id
     int[] selectRestaurId();
+    //根据菜名和种类实现模糊查询
+    List<Menu> selectByNC(String dishName, String dishClass);
 }

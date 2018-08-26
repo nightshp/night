@@ -36,12 +36,12 @@
     <div class="check-div form-inline">
         <div class="col-xs-4" >
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/selectByUser">
+        <%--<form method="post" action="${pageContext.request.contextPath}/selectByUser">--%>
             <div class="col-xs-6">
-                <input type="text" class="form-control input-sm" name="userId" placeholder="输入文字搜索">
-                <button class="btn btn-white btn-xs " type="submit">查 询 </button>
+                <input type="text" class="form-control input-sm" name="userId" id="userId" placeholder="根据用户id搜索" >
+                <button class="btn btn-white btn-xs " type="submit" onclick="showSelectOrder($('#userId').val())">查 询 </button>
             </div>
-        </form>
+        <%--</form>--%>
     </div>
     <div>
         <table class="table">
@@ -54,7 +54,7 @@
                 <th>订单状态</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${pageinfo.list}" var="ord">
+            <c:forEach items="${orders}" var="ord">
                 <tr>
                     <td>${ord.orderId}</td>
                     <td>${ord.userId}</td>
@@ -73,42 +73,6 @@
                 </tr>
             </c:forEach>
         </table>
-    </div>
-    <!-- 显示分页信息 -->
-    <div class="row">
-        <!--分页文字信息  -->
-        <div class="col-xs-5">当前 ${pageinfo.pageNum}页,总${pageinfo.pages}
-            页,总 ${pageinfo.total} 条记录</div>
-        <!-- 分页条信息 -->
-        <div class="col-xs-5">
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li><a onclick="showSelectOrder(1)">首页</a></li>
-                    <c:if test="${pageinfo.hasPreviousPage}">
-                        <li><a onclick="showSelectOrder(${pageinfo.pageNum-1})"
-                               aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-                        </a></li>
-                    </c:if>
-
-
-                    <c:forEach items="${pageinfo.navigatepageNums}" var="page_Num">
-                        <c:if test="${page_Num == pageinfo.pageNum}">
-                            <li class="active"><a onclick="showSelectOrder(${page_Num})">${page_Num}</a></li>
-                        </c:if>
-                        <c:if test="${page_Num != pageinfo.pageNum}">
-                            <li><a onclick="showSelectOrder(${page_Num})" >${page_Num}</a></li>
-                        </c:if>
-
-                    </c:forEach>
-                    <c:if test="${pageinfo.hasNextPage}">
-                        <li><a onclick="showSelectOrder(${pageinfo.pageNum+1})"
-                               aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-                        </a></li>
-                    </c:if>
-                    <li><a onclick="showSelectOrder(${pageinfo.pages})">末页</a></li>
-                </ul>
-            </nav>
-        </div>
     </div>
 </div>
 </div>

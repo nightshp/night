@@ -65,7 +65,7 @@ public class MenuController {
         List<Menu> menus=menuService.selectAll();
         PageInfo pageinfo=new PageInfo(menus);        //使用pageinfo包装结果集，只需将pageinfo交给页面
         model.addAttribute("pageinfo",pageinfo);
-        int[]arr=menuService.selectRestaurId();
+        int[]arr=menuService.selectRestaurId();      //查询出所有餐厅id并去除重复
         model.addAttribute("arr",arr);
         return "admin/dishmanager";
     }
@@ -115,4 +115,20 @@ public class MenuController {
         menuService.insert(menu);
         return "success3";
     }
+
+    //根据菜肴名字和种类查询数据
+    @RequestMapping("/selectByNaCl")
+    public String selectByMany(@RequestParam(value = "key")String key,Model model){
+        String dishName=null;
+        String diahClass=null;
+        dishName=key;
+        diahClass=key;
+        List<Menu>menus=menuService.selectByNC(dishName,diahClass);
+//        PageHelper.startPage(page,3);          //传入页码以及每页的大小
+//        PageInfo pageinfo=new PageInfo(menus);        //使用pageinfo包装结果集，只需将pageinfo交给页面
+//        model.addAttribute("pageinfo",pageinfo);
+        model.addAttribute("menus",menus);
+        return "admin/showdish";
+    }
+
 }

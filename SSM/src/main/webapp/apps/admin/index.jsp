@@ -51,20 +51,7 @@
                 }
             });
         }
-            <%--function showSelectOrder(page){--%>
-                <%--$.ajax({--%>
-                    <%--type:"GET",--%>
-                    <%--url:"${pageContext.request.contextPath}/selectByUser",--%>
-                    <%--data:{"page":page},--%>
-                    <%--dataType:"html",--%>
-                    <%--async:true,--%>
-                    <%--contentType:"application/json",--%>
-                    <%--success:function(result){--%>
-                        <%--$("#show_myinfo").empty();--%>
-                        <%--$("#show_myinfo").html(result);--%>
-                    <%--}--%>
-                <%--});--%>
-            <%--}--%>
+
         function showUser(page){
             $.ajax({
                 type:"GET",
@@ -79,10 +66,25 @@
                 }
             });
         }
+        $(function () {
+            $("#user").click(function () {
+                showUser(1);
+            });
+            $("#order").click(function () {
+                showOrder(1);
+            });
+            $("#restaur").click(function () {
+                showRestaur(1);
+            });
+            $("#dish").click(function () {
+                showDish(1);
+            });
 
+        });
+        <!--搜索功能-->
         function showSelectRestaur(key) {
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "${pageContext.request.contextPath}/selectByMany",
                 data:{"key":key},
                 dataType: "html",
@@ -94,21 +96,50 @@
                 }
             });
         }
-            $(function () {
-                $("#user").click(function () {
-                    showUser(1);
-                });
-                $("#order").click(function () {
-                    showOrder(1);
-                });
-                $("#restaur").click(function () {
-                    showRestaur(1);
-                });
-                $("#dish").click(function () {
-                    showDish(1);
-                });
-
+        function showSelectOrder(id){
+            $.ajax({
+                type:"GET",
+                url:"${pageContext.request.contextPath}/selectByUser",
+                data:{"userId":id},
+                dataType:"html",
+                async:true,
+                contentType:"application/json",
+                success:function(result){
+                    $("#show_myinfo").empty();
+                    $("#show_myinfo").html(result);
+                }
             });
+        }
+        function showSelectUser(userName){
+            $.ajax({
+                type:"GET",
+                url:"${pageContext.request.contextPath}/selectByKey",
+                data:{"userName":userName},
+                dataType:"html",
+                async:true,
+                contentType:"application/json",
+                success:function(result){
+                    $("#show_myinfo").empty();
+                    $("#show_myinfo").html(result);
+                }
+            });
+        }
+        function showSelectDish(key){
+            $.ajax({
+                type:"GET",
+                url:"${pageContext.request.contextPath}/selectByNaCl",
+                data:{"key":key},
+                dataType:"html",
+                async:true,
+                contentType:"application/json",
+                success:function(result){
+                    $("#show_myinfo").empty();
+                    $("#show_myinfo").html(result);
+                }
+            });
+        }
+
+
     </script>
 </head>
 <body>

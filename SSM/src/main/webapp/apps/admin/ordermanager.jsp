@@ -36,12 +36,12 @@
     <div class="check-div form-inline">
         <div class="col-xs-4" >
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/selectByUser">
+        <%--<form method="post" action="${pageContext.request.contextPath}/selectByUser">--%>
             <div class="col-xs-6">
-                <input type="text" class="form-control input-sm" name="userId" placeholder="输入文字搜索">
-                <button class="btn btn-white btn-xs " type="submit" >查 询 </button>
+                <input type="text" class="form-control input-sm" name="userId" id="userId" placeholder="根据用户id搜索">
+                <button class="btn btn-white btn-xs " type="submit" onclick="showSelectOrder($('#userId').val())">查 询 </button>
             </div>
-        </form>
+        <%--</form>--%>
     </div>
     <div>
         <table class="table">

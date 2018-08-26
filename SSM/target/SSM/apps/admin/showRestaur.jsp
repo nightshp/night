@@ -20,14 +20,14 @@
                 url: "${pageContext.request.contextPath}/editRestaur",
                 data: {"id": id},
                 success: function (data) {
-                    $("#id").val(data.restaurId);
-                    $("#name").val(data.restaurName);
-                    $("#address").val(data.restaurAddress);
-                    $("#phone1").val(data.phone);
-                    $("#range").val(data.restaurRange);
-                    $("#describe").val(data.restaurDescribe);
-                    $("#fee").val(data.fee);
-                    $("#pic").val(data.restaurPic);
+                    $("#id1").val(data.restaurId);
+                    $("#name1").val(data.restaurName);
+                    $("#address1").val(data.restaurAddress);
+                    $("#phone2").val(data.phone);
+                    $("#range1").val(data.restaurRange);
+                    $("#describe1").val(data.restaurDescribe);
+                    $("#fee1").val(data.fee);
+                    $("#pic1").val(data.restaurPic);
                 }
             });
         }
@@ -56,12 +56,12 @@
         <div class="col-xs-4" >
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加餐厅 </button>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/selectByMany">
+        <%--<form method="post" action="${pageContext.request.contextPath}/selectByMany">--%>
             <div class="col-xs-6">
-                <input type="text" class="form-control input-sm" name="key" placeholder="输入文字搜索">
-                <button class="btn btn-white btn-xs " type="submit">查 询 </button>
+                <input type="text" class="form-control input-sm" id="key"  name="key" placeholder="输入地址或名字搜索">
+                <button class="btn btn-white btn-xs " type="submit" onclick="showSelectRestaur($('#key').val())">查 询 </button>
             </div>
-        </form>
+        <%--</form>--%>
 
     </div>
     <div>
@@ -108,41 +108,41 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label">餐厅名字:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurName" type="text" class="form-control input-sm duiqi" id="name">
+                                <input name="restaurName" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">地址:</label>
                             <div class="col-xs-8">
-                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" id="address" >
+                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
-                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone1">
+                                <input name="phone" type="text" class="form-control input-sm duiqi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">送餐范围:</label>
+                            <label  class="col-xs-3 control-label">送餐范围:</label>
                             <div class="col-xs-8">
-                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range">
+                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">描述:</label>
+                            <label  class="col-xs-3 control-label">描述:</label>
                             <div class="col-xs-8">
-                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe">
+                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">配送费:</label>
+                            <label class="col-xs-3 control-label">配送费:</label>
                             <div class="col-xs-8">
-                                <input name="fee" type="text" class="form-control input-sm duiqi" id="fee">
+                                <input name="fee" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label  class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">
@@ -171,47 +171,47 @@
                         <div class="form-group ">
                             <label class="col-xs-3 control-label">ID:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurId" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
+                                <input name="restaurId" type="text" class="form-control input-sm duiqi" id="id1" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">餐厅名字:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurName" type="text" class="form-control input-sm duiqi" id="name">
+                                <input name="restaurName" type="text" class="form-control input-sm duiqi" id="name1">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">地址:</label>
                             <div class="col-xs-8">
-                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" id="address" >
+                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" id="address1" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
-                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone1">
+                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone2">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">送餐范围:</label>
+                            <label class="col-xs-3 control-label">送餐范围:</label>
                             <div class="col-xs-8">
-                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range">
+                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">描述:</label>
+                            <label class="col-xs-3 control-label">描述:</label>
                             <div class="col-xs-8">
-                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe">
+                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">配送费:</label>
+                            <label class="col-xs-3 control-label">配送费:</label>
                             <div class="col-xs-8">
-                                <input name="fee" type="text" class="form-control input-sm duiqi" id="fee">
+                                <input name="fee" type="text" class="form-control input-sm duiqi" id="fee1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label  class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">

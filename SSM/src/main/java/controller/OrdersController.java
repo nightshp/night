@@ -61,13 +61,13 @@ public class OrdersController {
    }
     //根据用户id查询出用户的所有订单/后台
         @RequestMapping("/selectByUser")
-        public String selectByUser(Integer page,Integer userId, Model model){
+        public String selectByUser(Integer userId, Model model){
             System.out.println(userId);
-            PageHelper.startPage(page, 3);          //传入页码以及每页的大小
+//            PageHelper.startPage(page, 3);          //传入页码以及每页的大小
             List<Orders> orders = ordersService.selectAll(userId);
             System.out.println(orders.size());
-            PageInfo pageinfo = new PageInfo(orders);        //使用pageinfo包装结果集，只需将pageinfo交给页面
-            model.addAttribute("pageinfo", pageinfo);
+//            PageInfo pageinfo = new PageInfo(orders);        //使用pageinfo包装结果集，只需将pageinfo交给页面
+            model.addAttribute("orders", orders);
             return "admin/showorder";
         }
 

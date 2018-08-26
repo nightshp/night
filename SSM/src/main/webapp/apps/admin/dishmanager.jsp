@@ -56,12 +56,12 @@
         <div class="col-xs-4" >
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加菜肴 </button>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/selectByKey">
+        <%--<form method="post" action="${pageContext.request.contextPath}/selectByKey">--%>
             <div class="col-xs-6">
-                <input type="text" class="form-control input-sm" name="userName" placeholder="输入文字搜索">
-                <button class="btn btn-white btn-xs " type="submit" >查 询 </button>
+                <input type="text" class="form-control input-sm" name="key" id="key" placeholder="输入菜名或种类搜索">
+                <button class="btn btn-white btn-xs " type="submit" onclick="showSelectDish($('#key').val())">查 询 </button>
             </div>
-        </form>
+        <%--</form>--%>
     </div>
     <div>
         <table class="table">
@@ -148,25 +148,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">类别:</label>
+                            <label  class="col-xs-3 control-label">类别:</label>
                             <div class="col-xs-8">
                                 <input name="dishClass" type="text" class="form-control input-sm duiqi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">介绍:</label>
+                            <label  class="col-xs-3 control-label">介绍:</label>
                             <div class="col-xs-8">
                                 <input name="dishDiscribe" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">价格:</label>
+                            <label  class="col-xs-3 control-label">价格:</label>
                             <div class="col-xs-8">
                                 <input name="dishPric" type="text" class="form-control input-sm duiqi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">餐厅id:</label>
+                            <label  class="col-xs-3 control-label">餐厅id:</label>
                             <div class="col-xs-8">
                                 <select name="restaurId">
                                 <c:forEach items="${arr}" var="ar">
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label  class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">
@@ -221,25 +221,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">介绍:</label>
+                            <label  class="col-xs-3 control-label">介绍:</label>
                             <div class="col-xs-8">
                                 <input name="dishDiscribe" type="text" class="form-control input-sm duiqi" id="describe">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">价格:</label>
+                            <label  class="col-xs-3 control-label">价格:</label>
                             <div class="col-xs-8">
                                 <input name="dishPric" type="text" class="form-control input-sm duiqi" id="pric">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">餐厅id:</label>
+                            <label  class="col-xs-3 control-label">餐厅id:</label>
                             <div class="col-xs-8">
                                 <input name="restaurId" type="text" class="form-control input-sm duiqi" id="restaur1" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">

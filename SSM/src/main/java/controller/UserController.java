@@ -122,7 +122,7 @@ public class UserController {
         List<User>users=userService.selectAll();      //查询结果集
         PageInfo pageInfo=new PageInfo(users);        //使用pageinfo包装结果集，只需将pageinfo交给页面
         model.addAttribute("pageinfo",pageInfo);
-        return "admin/user";
+        return "admin/usermanager";
     }
     //图片上传
     @RequestMapping("/upload")

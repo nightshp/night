@@ -49,4 +49,8 @@
     select distinct (restaur_id)
     from menu
   </select>
+  <select id="selectByNC" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select dish_id, dish_name, dish_pric, dish_discribe, dish_class, dish_pic, restaur_id
+    from menu where dish_name like concat("%",#{dishName,jdbcType=VARCHAR},"%") or dish_class like concat("%",#{dishClass,jdbcType=VARCHAR},"%")
+  </select>
 </mapper>

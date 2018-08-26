@@ -46,4 +46,9 @@ public class MenuService implements IMenuService {
     public int[] selectRestaurId() {
         return menuMapper.selectRestaurId();
     }
+
+    @Override
+    public List<Menu> selectByNC(String dishName, String dishClass) {
+        return menuMapper.selectByNC(dishName,dishClass);
+    }
 }

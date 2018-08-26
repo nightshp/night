@@ -26,7 +26,6 @@
                     $("#range").val(data.restaurRange);
                     $("#describe").val(data.restaurDescribe);
                     $("#fee").val(data.fee);
-                    $("#pic").val(data.restaurPic);
                 }
             });
         }
@@ -76,7 +75,7 @@
         </div>
         <%--<form method="post" action="${pageContext.request.contextPath}/selectByMany">--%>
         <div class="col-xs-6">
-            <input type="text" class="form-control input-sm" id="key" placeholder="输入文字搜索">
+            <input type="text" class="form-control input-sm" id="key"  name="key" placeholder="输入地址或名字搜索">
             <button class="btn btn-white btn-xs " type="submit" onclick="showSelectRestaur($('#key').val())" >查 询 </button>
         </div>
         <%--</form>--%>
@@ -162,41 +161,41 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label">餐厅名字:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurName" type="text" class="form-control input-sm duiqi" id="name">
+                                <input name="restaurName" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">地址:</label>
                             <div class="col-xs-8">
-                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" id="address" >
+                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
-                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone1">
+                                <input name="phone" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">送餐范围:</label>
+                            <label  class="col-xs-3 control-label">送餐范围:</label>
                             <div class="col-xs-8">
-                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range">
+                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">描述:</label>
+                            <label  class="col-xs-3 control-label">描述:</label>
                             <div class="col-xs-8">
-                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe">
+                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">配送费:</label>
+                            <label  class="col-xs-3 control-label">配送费:</label>
                             <div class="col-xs-8">
-                                <input name="fee" type="text" class="form-control input-sm duiqi" id="fee">
+                                <input name="fee" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label  class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">
@@ -241,31 +240,31 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
                                 <input name="phone" type="text" class="form-control input-sm duiqi" id="phone1">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">送餐范围:</label>
+                            <label  class="col-xs-3 control-label">送餐范围:</label>
                             <div class="col-xs-8">
                                 <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">描述:</label>
+                            <label class="col-xs-3 control-label">描述:</label>
                             <div class="col-xs-8">
                                 <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">配送费:</label>
+                            <label  class="col-xs-3 control-label">配送费:</label>
                             <div class="col-xs-8">
                                 <input name="fee" type="text" class="form-control input-sm duiqi" id="fee">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label class="col-xs-3 control-label">图片:</label>
                                 <input name="file" type="file">
                         </div>
                         <div class="modal-footer">

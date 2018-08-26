@@ -54,12 +54,12 @@
         <div class="col-xs-4" >
             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加用户 </button>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/selectByKey">
+        <%--<form method="post" action="${pageContext.request.contextPath}/selectByKey">--%>
             <div class="col-xs-6">
-                <input type="text" class="form-control input-sm" name="userName" placeholder="输入文字搜索">
-                <button class="btn btn-white btn-xs " type="submit" >查 询 </button>
+                <input type="text" class="form-control input-sm" name="userName" id="userName" placeholder="输入用户名搜索">
+                <button class="btn btn-white btn-xs " type="submit" onclick="showSelectUser($('#userName').val())">查 询 </button>
             </div>
-        </form>
+        <%--</form>--%>
     </div>
     <div>
         <table class="table">
@@ -152,25 +152,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">性别:</label>
+                            <label class="col-xs-3 control-label">性别:</label>
                             <div class="col-xs-8">
                                 <input name="sex" type="text" class="form-control input-sm duiqi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
                                 <input name="phone" type="text" class="form-control input-sm duiqi" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">邮箱:</label>
+                            <label  class="col-xs-3 control-label">邮箱:</label>
                             <div class="col-xs-8">
                                 <input name="email" type="text" class="form-control input-sm duiqi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">
@@ -215,25 +215,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">性别:</label>
+                            <label class="col-xs-3 control-label">性别:</label>
                             <div class="col-xs-8">
                                 <input name="sex" type="text" class="form-control input-sm duiqi" id="sex">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">邮箱:</label>
+                            <label  class="col-xs-3 control-label">邮箱:</label>
                             <div class="col-xs-8">
                                 <input name="email" type="text" class="form-control input-sm duiqi" id="email">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">电话:</label>
+                            <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
                                 <input name="phone" type="text" class="form-control input-sm duiqi" id="phone">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sKnot" class="col-xs-3 control-label">图片:</label>
+                            <label  class="col-xs-3 control-label">图片:</label>
                             <input name="file" type="file">
                         </div>
                         <div class="modal-footer">
