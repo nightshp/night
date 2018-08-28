@@ -106,7 +106,9 @@ public class UserController {
 		List<Menu> menus=menuService.selectAll();
 		PageInfo pageinfo=new PageInfo(menus);        //使用pageinfo包装结果集，只需将pageinfo交给页面
 		model.addAttribute("pageinfo",pageinfo);
-	    return "app/index";
+//	    return "app/index";
+		return "forward:/selectAllMenu";
+//		return "<script>window.location.href='../selectAllMenu';</script>";
     }
 
     //完善用户信息
@@ -117,8 +119,8 @@ public class UserController {
     }
     //查询所有用户并进行分页，
     @RequestMapping("/getAll")
-    public String getAll(@RequestParam(value = "pn",defaultValue = "1")Integer pn,Model model){
-        PageHelper.startPage(pn,3);          //传入页码以及每页的大小
+    public String getAll(Integer page,Model model){
+        PageHelper.startPage(page,3);          //传入页码以及每页的大小
         List<User>users=userService.selectAll();      //查询结果集
         PageInfo pageInfo=new PageInfo(users);        //使用pageinfo包装结果集，只需将pageinfo交给页面
         model.addAttribute("pageinfo",pageInfo);
@@ -169,7 +171,8 @@ public class UserController {
 		upload(user, file);
 		userService.updateUserinfo(user);
 		System.out.println("修改成功");
-		return "<script>alert('success');window.location.href='./getAll';</script>";
+		return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+//		return "forward:/getAll";
 	}
 
 	private void upload(@ModelAttribute User user, @RequestParam("file") MultipartFile file) throws IOException {

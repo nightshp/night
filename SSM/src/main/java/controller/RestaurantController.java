@@ -89,8 +89,10 @@ public class RestaurantController {
         System.out.println(restaurant);
         restaurantService.updateByPrimaryKey(restaurant);
         System.out.println("修改成功");
-        return "<script>alert('success');window.location.href='./restaurManager';</script>";
+//        return "<script>alert('success');window.location.href='./restaurManager';</script>";
 //		return userService.updateUsers(user) > 0 ? "ok" : "error";
+//        return "forward:/restaurManager";
+        return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
     }
     //根据id删除
     @RequestMapping("/deleteRestaur")
@@ -109,7 +111,7 @@ public class RestaurantController {
         //开始上传
         file.transferTo(new File("E:/uploads/"+filename));
         restaurant.setRestaurPic(filename);
-       restaurantService.insert(restaurant);
+        restaurantService.insert(restaurant);
         return "success3";
     }
     //根据多字段查询数据

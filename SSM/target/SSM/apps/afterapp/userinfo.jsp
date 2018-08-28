@@ -23,28 +23,19 @@
                 $("#phone").val(data.phone);
             }
         });
+        $("#updateInfo").modal("show");
     }
 
     function updateUser() {
-        <%--$.post("${pageContext.request.contextPath}/update", $(form).serialize(), function (data) {--%>
-            <%--if (data == 'ok') {--%>
-                <%--alert("用户更新成功！");--%>
-                <%--setTimeout(function () {--%>
-                    <%--window.location.reload();--%>
-                <%--}, 3000);--%>
-            <%--}--%>
-            <%--else {--%>
-                <%--alert("修改失败");--%>
-            <%--}--%>
-        <%--});--%>
         $.ajax({
             url:"${pageContext.request.contextPath}/update",
             data:$("#form1").serialize(),
             type:"POST",
             success:function (data) {
                 if (data == 'ok') {
+                    $("#updateInfo").modal("hide");
                     alert("用户更新成功");
-                    window.location.reload();
+                    userHtml();
                 }
                 else {
                     alert("修改失败");
@@ -69,20 +60,20 @@
     <li class="list-group-item">电话：${logUser.phone}</li>
 </ul>
     <div style="margin-left: 50px">
-            <button class="btn btn-danger btn-default" data-toggle="modal" data-target="#myModal" onclick="editUser(${logUser.userId})">修改</button>
+            <button class="btn btn-danger btn-default"  onclick="editUser(${logUser.userId})">修改</button>
     </div>
 </div>
 </div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">修改个人信息</h4>
             </div>
-            <form  onsubmit="updateUser()" id="form1">
+            <form id="form1">
             <div class="modal-body">
                 <table class="table">
                     <tbody style="font-size: 15px">
@@ -109,7 +100,7 @@
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-default">重置</button>
-                <button type="submit" class="btn btn-success btn-default">提交更改</button>
+                <input type="button" class="btn btn-success btn-default" value="提交更改" onclick="updateUser()"/>
             </div>
             </form>
         </div><!-- /.modal-content -->

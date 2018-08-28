@@ -16,6 +16,8 @@ public class Orders {
 
     private String sendAddr;
 
+    private String orderName;
+
     public Integer getOrderId() {
         return orderId;
     }
@@ -62,5 +64,13 @@ public class Orders {
 
     public void setSendAddr(String sendAddr) {
         this.sendAddr = sendAddr == null ? null : sendAddr.trim();
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
 }

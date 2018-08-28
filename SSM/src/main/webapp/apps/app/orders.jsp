@@ -32,7 +32,7 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="pr-right">
-							<div ><span style="width: 100px"><a href="#">加入餐车</a></span></div>
+							<div ><span style="width: 100px"><a onclick="openLoginModal()" style="cursor: pointer">加入餐车</a></span></div>
 						</div>
 					</div>
 				</li>

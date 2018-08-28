@@ -99,9 +99,9 @@
         <div class="col-xs-5">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    <li><a href="${pageContext.request.contextPath}/getAll?pn=1">首页</a></li>
+                    <li><a onclick="showUser(1)">首页</a></li>
                     <c:if test="${pageinfo.hasPreviousPage}">
-                        <li><a href="${pageContext.request.contextPath}/getAll?pn=${pageinfo.pageNum-1}"
+                        <li><a onclick="showUser(${pageinfo.pageNum-1})"
                                aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
                         </a></li>
                     </c:if>
@@ -112,16 +112,16 @@
                             <li class="active"><a href="#">${page_Num}</a></li>
                         </c:if>
                         <c:if test="${page_Num != pageinfo.pageNum}">
-                            <li><a href="${pageContext.request.contextPath}/getAll?pn=${page_Num}">${page_Num}</a></li>
+                            <li><a onclick="showUser(${page_Num})" >${page_Num}</a></li>
                         </c:if>
 
                     </c:forEach>
                     <c:if test="${pageinfo.hasNextPage}">
-                        <li><a href="${pageContext.request.contextPath}/getAll?pn=${pageinfo.pageNum+1}"
+                        <li><a onclick="showUser( ${pageinfo.pageNum+1})"
                                aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                         </a></li>
                     </c:if>
-                    <li><a href="${pageContext.request.contextPath}/getAll?pn=${pageinfo.pages}">末页</a></li>
+                    <li><a onclick="showUser(${pageinfo.pages})">末页</a></li>
                 </ul>
             </nav>
         </div>

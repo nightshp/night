@@ -14,16 +14,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
     <script type="text/javascript">
         function insertAddress() {
-            <%--$.post("${pageContext.request.contextPath}/insertAddress?id=${logUser.userId}",$(form).serialize(),function (data) {--%>
-                <%--if (data=="ok"){--%>
-                    <%--alert("插入成功");--%>
-                    <%--setTimeout(function(){--%>
-                        <%--location.reload();--%>
-                    <%--},3000);--%>
-                <%--} else {--%>
-                    <%--alert("失败")--%>
-                <%--}--%>
-            <%--});--%>
             $.ajax({
                 url:"${pageContext.request.contextPath}/insertAddress?id=${logUser.userId}",
                 data:$("#form1").serialize(),
@@ -31,14 +21,16 @@
                 success:function (data) {
                     if (data == 'ok') {
                         alert("插入成功！");
-                        window.location.reload();
+                        addressHtml();
                     }
                     else {
                         alert("插入失败");
+                        addressHtml();
                     }
                 },
                 error:function () {
                     alert("请求错误");
+                    addressHtml();
                 }
             });
         }
@@ -50,10 +42,11 @@
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
                         alert("删除更新成功！");
-                        window.location.reload();
+                        addressHtml();
                     }
                     else {
                         alert("删除失败");
+                        addressHtml();
                     }
 
                 });
@@ -73,36 +66,51 @@
                     $("#phone").val(data.phone);
                 }
             });
+            $("#updateAddress").modal("show");
         }
 
         function updateAddress() {
-            <%--$.post("${pageContext.request.contextPath}/updateAddress?id=${logUser.userId}", $(form).serialize(), function (data) {--%>
-                <%--if (data == 'ok') {--%>
-                    <%--alert("地址更新成功！");--%>
-                    <%--setTimeout(function () {--%>
-                        <%--window.location.reload();--%>
-                    <%--}, 3000);--%>
-                <%--}--%>
-                <%--else {--%>
-                    <%--alert("修改失败");--%>
-                <%--}--%>
-            <%--});--%>
+
             $.ajax({
                 url:"${pageContext.request.contextPath}/updateAddress?id=${logUser.userId}",
                 data:$("#form2").serialize(),
                 type:"POST",
                 success:function (data) {
                     if (data == 'ok') {
+                        $("#updateAddress").modal("hide");
                         alert("地址更新成功！");
-                        window.location.reload();
+                        addressHtml();
                     }
                     else {
                         alert("修改失败");
+                        addressHtml();
                     }
                 },
                 error:function () {
                     alert("请求错误");
+                    addressHtml();
                 }
+            });
+        }
+        function setDefault(userId,addressId) {
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updateDefault",
+                data:{"userId":userId,"addressId":addressId},
+                type:"POST",
+                success:function (data) {
+                    if (data =="ok") {
+                        alert("设置成功！");
+                        addressHtml();
+                    }
+                    else {
+                        alert("设置失败");
+                        addressHtml();
+                    }
+                },
+            error:function () {
+                alert("请求错误");
+                addressHtml();
+            }
             });
         }
     </script>
@@ -115,7 +123,7 @@
     <div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
       <div class="user_m clearfix">
           <div class="address">
-              <form  onsubmit="insertAddress()" id="form1">
+              <form  id="form1">
               <ul class="reg ads_a">
             	<li class="clearfix">
                 	<span class="title"><em>新增收货地址</em></span>
@@ -167,7 +175,7 @@
                 <li class="clearfix">
                 	<span class="title">&nbsp;</span>
                     <div class="li_m">
-                    	<input name="" type="submit" value="保存">
+                    	<input  type="button"class="btn btn-danger btn-default" value="保存" onclick="insertAddress()">
                     </div>
                 </li>
             </ul>
@@ -190,12 +198,12 @@
                         <td>${adr.detaAddress}</td>
                         <td>${adr.postalcode}</td>
                         <td>${adr.phone}</td>
-                        <td><a  data-toggle="modal" data-target="#myModal" onclick="editAddress(${adr.addressId})" style="cursor:pointer">修改</a> | <a  onclick="deleteAddress(${adr.addressId})" style="cursor: pointer">删除</a></td>
+                        <td><a  onclick="editAddress(${adr.addressId})" style="cursor:pointer">修改</a> | <a  onclick="deleteAddress(${adr.addressId})" style="cursor: pointer">删除</a></td>
                         <c:if test="${adr.isdefault==1}" var="rs">
                             <td><span class="x_mr active">默认地址</span></td>
                         </c:if>
                         <c:if test="${adr.isdefault==0}" var="rs">
-                            <td><a class="x_mr active" style="cursor: pointer" href="${pageContext.request.contextPath}/updateDefault?userId=${logUser.userId}&addressId=${adr.addressId}">设为默认</a></td>
+                            <td><a class="x_mr active"  style="cursor: pointer" onclick="setDefault(${logUser.userId},${adr.addressId})">设为默认</a></td>
                         </c:if>
                     </tr>
                 </c:forEach>
@@ -208,14 +216,15 @@
 <div class="space_hx">&nbsp;</div>
 
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">修改地址信息</h4>
             </div>
-            <form id="form2" onsubmit="updateAddress()" >
+
+            <form id="form2" >
                 <div class="modal-body">
                     <table class="table">
                         <tbody style="font-size: 15px">
@@ -238,10 +247,12 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default">重置</button>
-                    <button type="submit" class="btn btn-success btn-default">提交更改</button>
+                    <input type="button" class="btn btn-success btn-default" value="提交更改" onclick="updateAddress()"/>
                 </div>
+
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

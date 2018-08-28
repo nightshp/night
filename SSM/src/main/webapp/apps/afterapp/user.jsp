@@ -14,17 +14,7 @@
 <script type="text/javascript">
     $(function(){
         $("#my").click(function(){
-            $.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/apps/afterapp/userinfo.jsp",
-                dataType:"html",
-                async:true,
-                contentType:"application/json",
-                success:function(result){
-                    $("#show_myinfo").empty();
-                    $("#show_myinfo").html(result);
-                }
-            });
+           userHtml();
         });
         $("#shopcar").click(function(){
             $.ajax({
@@ -53,32 +43,51 @@
             });
         });
         $("#book").click(function(){
-            $.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/selectOrders?userId=${logUser.userId}",
-                dataType:"html",
-                async:true,
-                contentType:"application/json",
-                success:function(result){
-                    $("#show_myinfo").empty();
-                    $("#show_myinfo").html(result);
-                }
-            });
+            bookHtml();
         });
         $("#address").click(function(){
-            $.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/selectAddresses?id=${logUser.userId}",
-                dataType:"html",
-                async:true,
-                contentType:"application/json",
-                success:function(result){
-                    $("#show_myinfo").empty();
-                    $("#show_myinfo").html(result);
-                }
-            });
+            addressHtml();
         });
     });
+    function addressHtml() {
+        $.ajax({
+            type:"GET",
+            url:"${pageContext.request.contextPath}/selectAddresses?id=${logUser.userId}",
+            dataType:"html",
+            async:true,
+            contentType:"application/json",
+            success:function(result){
+                $("#show_myinfo").empty();
+                $("#show_myinfo").html(result);
+            }
+        });
+    }
+    function bookHtml() {
+        $.ajax({
+            type:"GET",
+            url:"${pageContext.request.contextPath}/selectOrders?userId=${logUser.userId}",
+            dataType:"html",
+            async:true,
+            contentType:"application/json",
+            success:function(result){
+                $("#show_myinfo").empty();
+                $("#show_myinfo").html(result);
+            }
+        });
+    }
+    function userHtml() {
+        $.ajax({
+            type:"GET",
+            url:"${pageContext.request.contextPath}/apps/afterapp/userinfo.jsp",
+            dataType:"html",
+            async:true,
+            contentType:"application/json",
+            success:function(result){
+                $("#show_myinfo").empty();
+                $("#show_myinfo").html(result);
+            }
+        });
+    }
 </script>
 </head>
 

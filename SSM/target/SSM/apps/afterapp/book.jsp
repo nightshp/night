@@ -20,10 +20,11 @@
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
                         alert("删除订单成功！");
-                        window.location.reload();
+                        bookHtml();
                     }
                     else {
                         alert("删除失败");
+                        bookHtml();
                     }
 
                 });
@@ -39,7 +40,7 @@
     <table class="ads_b" cellpadding="0" cellspacing="0">
         <tr>
             <th scope="col">订单ID</th>
-            <th scope="col">用户ID</th>
+            <th scope="col">收货人</th>
             <th scope="col">下单时间</th>
             <th scope="col">预计到达时间</th>
             <th scope="col">收货地址</th>
@@ -49,7 +50,7 @@
         <c:forEach items="${orders}" var="ord" varStatus="status">
             <tr>
                 <td>${ord.orderId}</td>
-                <td>${ord.userId}</td>
+                <td>${ord.orderName}</td>
                 <td>${ord.orderDate}</td>
                 <td>${ord.endDate}</td>
                 <td>${ord.sendAddr}</td>

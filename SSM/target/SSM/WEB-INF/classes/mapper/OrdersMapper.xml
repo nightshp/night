@@ -8,6 +8,7 @@
     <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
     <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
     <result column="send_addr" jdbcType="VARCHAR" property="sendAddr" />
+    <result column="order_name" jdbcType="VARCHAR" property="orderName" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orders
@@ -16,10 +17,10 @@
   <insert id="insert" parameterType="entity.Orders">
        insert into orders (order_status, user_id,
        order_date, end_date,
-      send_addr)
+      send_addr,order_name)
     values ( #{orderStatus,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
       NOW(), DATE_ADD(order_date,INTERVAL "1 1" DAY_HOUR),
-      #{sendAddr,jdbcType=VARCHAR})
+      #{sendAddr,jdbcType=VARCHAR},#{orderName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="entity.Orders">
     update orders
@@ -27,20 +28,21 @@
       user_id = #{userId,jdbcType=INTEGER},
       order_date = #{orderDate,jdbcType=TIMESTAMP},
       end_date = #{endDate,jdbcType=TIMESTAMP},
-      send_addr = #{sendAddr,jdbcType=VARCHAR}
+      send_addr = #{sendAddr,jdbcType=VARCHAR},
+      order_name=#{orderName,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select order_id, order_status, user_id, order_date, end_date, send_addr
+    select order_id, order_status, user_id, order_date, end_date, send_addr,order_name
     from orders
     where order_id = #{orderId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select order_id, order_status, user_id, order_date, end_date, send_addr
+    select order_id, order_status, user_id, order_date, end_date, send_addr, order_name
     from orders where user_id=#{userId,jdbcType=INTEGER}
   </select>
   <select id="selectall" resultMap="BaseResultMap">
-    select order_id, order_status, user_id, order_date, end_date, send_addr
+    select order_id, order_status, user_id, order_date, end_date, send_addr ,order_name
     from orders
   </select>
 </mapper>

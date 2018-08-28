@@ -162,7 +162,7 @@
                       </ul>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">退出</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logoutAdmin">退出</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                </div><!-- /.container-fluid -->

@@ -27,6 +27,7 @@ public class AddressController {
         address.setRecName(rec_name);
         address.setPhone(phone);
         address.setUserId(id);
+        address.setIsdefault(0);
         System.out.println(address);
         if (addressService.insert(address)>0){
             List<Address>addresses=addressService.selectAll(id);
@@ -84,13 +85,16 @@ public class AddressController {
     }
     //设置默认地址
     @RequestMapping("/updateDefault")
+    @ResponseBody
     public String updateDefault(Integer userId,Integer addressId){
-        addressService.updateDefault(addressId,1);
         List<Address>addresses=addressService.selectNotDefault(userId,addressId);
         for (Address address:addresses) {
             addressService.updateDefault(address.getAddressId(),0);
         }
-        return "afterapp/user";
+        if (addressService.updateDefault(addressId,1)>0){
+            return "ok";
+        }
+        return "error";
     }
 
 

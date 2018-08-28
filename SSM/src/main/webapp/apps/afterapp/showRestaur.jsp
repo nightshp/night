@@ -74,7 +74,7 @@
         <c:forEach items="${resatuar}" var="res">
             <div class="col-md-4 latis-left">
                 <h3>${res.restaurName}</h3>
-                <img src="/uploads/${res.restaurPic}" class="img-responsive" style="height: 280px">
+               <a   href="${pageContext.request.contextPath}/selectByRestaurId?restaurId=${res.restaurId}"><img src="/uploads/${res.restaurPic}" class="img-responsive" style="height: 280px"></a>
                 <div class="special-info grid_1 simpleCart_shelfItem">
                     <div style="height: 60px">
                         <p>地址:${res.restaurAddress}</p>

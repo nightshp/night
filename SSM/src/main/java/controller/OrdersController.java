@@ -27,8 +27,10 @@ public class OrdersController {
     public String insertOrder(Integer userId, Orders orders){
         Address address=addressService.selectDefU(1,userId);
         String send_addr=address.getAreaAddress()+" "+address.getDetaAddress();
+        String ordername=address.getRecName();
         orders.setUserId(userId);
         orders.setSendAddr(send_addr);
+        orders.setOrderName(ordername);
 //        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         orders.setOrderStatus(1);
         if(ordersService.insert(orders)>0){
