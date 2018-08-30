@@ -92,28 +92,36 @@ public class MenuController {
     //点击页面的保存修改
     @RequestMapping("/updateDish")
     @ResponseBody
-    public String updateRestaur(@ModelAttribute Menu menu, @RequestParam(value = "file") MultipartFile file) throws IOException {
+    public String updateRestaur(@ModelAttribute Menu menu, @RequestParam(value = "file1") MultipartFile file) throws IOException {
         //获取文件名
         String filename=file.getOriginalFilename();
         //开始上传
         file.transferTo(new File("E:/uploads/"+filename));
         menu.setDishPic(filename);
         System.out.println(menu);
-        menuService.updateByPrimaryKey(menu);
-        System.out.println("修改成功");
-        return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+
+        if(menuService.updateByPrimaryKey(menu)>0){
+            return "ok";
+        }
+        return "error";
+//        return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
 //		return userService.updateUsers(user) > 0 ? "ok" : "error";
     }
     //添加菜肴
     @RequestMapping("/insertDish")
+    @ResponseBody
     public String insertRestaur(@ModelAttribute Menu menu, @RequestParam(value = "file") MultipartFile file) throws IOException {
         //获取文件名
         String filename=file.getOriginalFilename();
         //开始上传
         file.transferTo(new File("E:/uploads/"+filename));
         menu.setDishPic(filename);
-        menuService.insert(menu);
-        return "success3";
+
+        if(menuService.insert(menu)>0){
+            return "ok";
+        }
+        return "error";
+//        return "success3";
     }
 
     //根据菜肴名字和种类查询数据

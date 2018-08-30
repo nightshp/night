@@ -10,16 +10,33 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/thems.css">
 <script type="text/javascript">
-    function updateUser(form) {
-        $.post("${pageContext.request.contextPath}/editPwd?id=${logUser.userId}", $(form).serialize(), function (data) {
-            if (data == 'ok') {
-                alert("密码修改成功！");
-                setTimeout(function () {
+    function updateUser() {
+        <%--$.post("${pageContext.request.contextPath}/editPwd?id=${logUser.userId}", $(form).serialize(), function (data) {--%>
+            <%--if (data == 'ok') {--%>
+                <%--alert("密码修改成功！");--%>
+                <%--setTimeout(function () {--%>
+                    <%--window.location.reload();--%>
+                <%--}, 3000);--%>
+            <%--}--%>
+            <%--else {--%>
+                <%--alert("修改失败");--%>
+            <%--}--%>
+        <%--});--%>
+        $.ajax({
+            url:"${pageContext.request.contextPath}/editPwd?id=${logUser.userId}",
+            data:$("#form4").serialize(),
+            type:"POST",
+            success:function (data) {
+                if (data == 'ok') {
+                    alert("密码修改成功！");
                     window.location.reload();
-                }, 3000);
-            }
-            else {
-                alert("修改失败");
+                }
+                else {
+                    alert("修改失败");
+                }
+            },
+            error:function () {
+                alert("请求错误");
             }
         });
     }
@@ -41,7 +58,7 @@
 <body>
 
 <div class="space_hx">&nbsp;</div>
-<form method="post" onsubmit="return updateUser(this)" id="form1">
+<form  id="form4">
 <div class="scd">
         <div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
             <div class="user_m clearfix">
@@ -65,7 +82,7 @@
                         </div>
                         <div id="promat1" style="display: inline;color: #8C1919"></div>
                     </li>
-                    <li class="btn"><input  type="submit" value="确 定"></li>
+                    <li class="btn"><input  type="button" value="确 定" onclick="updateUser()"></li>
                 </ul>
             </div>
         </div>

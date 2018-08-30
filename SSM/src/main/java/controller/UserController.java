@@ -115,7 +115,7 @@ public class UserController {
     @RequestMapping("/updateById")
     public String updateById(String email,String sex,String phone,Integer id){
 	    userService.updateByPrimaryKey(email,phone,sex,id);
-	    return "success";
+	    return "afterapp/user";
     }
     //查询所有用户并进行分页，
     @RequestMapping("/getAll")
@@ -167,11 +167,14 @@ public class UserController {
 	//修改用户包括图片的上传
 	@RequestMapping("/updateUser")
 	@ResponseBody
-	public String updateUser(@ModelAttribute User user,@RequestParam(value = "file") MultipartFile file) throws IOException {
+	public String updateUser(@ModelAttribute User user,@RequestParam(value = "file1") MultipartFile file) throws IOException {
 		upload(user, file);
-		userService.updateUserinfo(user);
-		System.out.println("修改成功");
-		return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+
+//		System.out.println("修改成功");
+		if(userService.updateUserinfo(user)>0){
+			return "ok";
+		}
+		return "error";
 //		return "forward:/getAll";
 	}
 
@@ -189,9 +192,13 @@ public class UserController {
 	@ResponseBody
 	public String insertUser(@ModelAttribute User user,@RequestParam(value = "file") MultipartFile file) throws IOException{
 		upload(user, file);
-		userService.insert(user);
+
 		System.out.println("添加成功");
-		return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+//		return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+		if(userService.insert(user)>0){
+			return "ok";
+		}
+		return "error";
 	}
 	//后台
 	//查询

@@ -20,7 +20,7 @@
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
                         alert("删除成功！");
-                        window.location.reload();
+                        showOrder(1);
                     }
                     else {
                         alert("删除失败");

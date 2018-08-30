@@ -19,7 +19,7 @@
             $.post(url, args, function (data) {
                 if (data == 'ok') {
                     alert("删除更新成功！");
-                    window.location.reload();
+                    shopcarHtml();
                 }
                 else {
                     alert("删除失败");
@@ -29,23 +29,6 @@
         }
     }
     function insertOrder(id) {
-        <%--$.ajax({--%>
-            <%--url:"${pageContext.request.contextPath}/insertOrder?userId=${logUser.userId}",--%>
-            <%--dataType:"json",--%>
-            <%--type:"POST",--%>
-            <%--success:function (data) {--%>
-                <%--if (data == 'ok') {--%>
-                    <%--alert("下单成功！");--%>
-                    <%--window.location.reload();--%>
-                <%--}--%>
-                <%--else {--%>
-                    <%--alert("下单失败");--%>
-                <%--}--%>
-            <%--},--%>
-            <%--error:function () {--%>
-                <%--alert("请求错误");--%>
-            <%--}--%>
-        <%--});--%>
         if (confirm('确实要下单吗?')) {
             var url = "${pageContext.request.contextPath}/insertOrder";
             var args = {"userId": id};
@@ -71,6 +54,7 @@
         <div class="u_r" style="float: left;margin-left: 15px;margin-top: -24px">
             <div class="user_m user_ma clearfix">
             	<div class="shopcar">
+
                     <div class="car_m">
                     	<table cellpadding="0" cellspacing="0">
                             <c:forEach items="${shopcar}" var="shop">

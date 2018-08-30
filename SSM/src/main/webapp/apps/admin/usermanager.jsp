@@ -20,7 +20,7 @@
                 data: {"id": id},
                 success: function (data) {
                     $("#id").val(data.userId);
-                    $("#name1").val(data.userName);
+                    $("#name").val(data.userName);
                     $("#password").val(data.userPwd);
                     $("#email").val(data.email);
                     $("#phone").val(data.phone);
@@ -37,7 +37,7 @@
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
                         alert("删除更新成功！");
-                        window.location.reload();
+                        showUser(1);
                     }
                     else {
                         alert("删除失败");
@@ -45,6 +45,73 @@
 
                 });
             }
+        }
+        function updateUser() {
+            // var form=document.getElementById("#form2");
+            var formData = new FormData();
+            formData.append("userId",$("input[name=userId1]").val());
+            formData.append("userName",$("input[name=userName1]").val());
+            formData.append("userPwd",$("input[name=userPwd1]").val());
+            formData.append("email",$("input[name=email1]").val());
+            formData.append("phone",$("input[name=phone1]").val());
+            formData.append("sex",$("input[name=sex1]").val());
+            formData.append("file1",$("input[name=file1]")[0].files[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updateUser",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("更新成功");
+                        $(".modal-backdrop").remove();
+                        showUser(1);
+                    }
+                    else {
+                        alert("修改失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
+        }
+        function insertUser() {
+            var formData = new FormData();
+            alert($("input[name=userName]").val());
+            formData.append("userName",$("#Iname").val());
+            formData.append("userPwd",$("input[name=userPwd]").val());
+            formData.append("email",$("input[name=email]").val());
+            formData.append("phone",$("input[name=phone]").val());
+            formData.append("sex",$("input[name=sex]").val());
+            formData.append("file",$("input[name=file]")[0].files[0]);
+            // var formData=new FormData($("#form1")[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/insertUser",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        // $("#addUser").modal("hide");
+                        alert("添加成功！");
+                        // window.location.reload();
+                        $(".modal-backdrop").remove();
+                        showUser(1);
+                    }
+                    else {
+                        alert("添加失败");
+                        showUser(1);
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
         }
     </script>
 </head>
@@ -138,11 +205,11 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="post" class="form-horizontal" action="${pageContext.request.contextPath}/insertUser" enctype="multipart/form-data">
+                    <form method="post" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-xs-3 control-label">用户名:</label>
                             <div class="col-xs-8 ">
-                                <input name="userName" type="text" class="form-control input-sm duiqi">
+                                <input name="userName" type="text" class="form-control input-sm duiqi" id="Iname">
                             </div>
                         </div>
                         <div class="form-group">
@@ -175,7 +242,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >添 加</button>
+                            <input type="button" class="btn btn-xs btn-green" value="添 加" onclick="insertUser()"/>
                         </div>
                     </form>
                 </div>
@@ -199,46 +266,46 @@
                         <div class="form-group ">
                             <label class="col-xs-3 control-label">ID:</label>
                             <div class="col-xs-8 ">
-                                <input name="userId" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
+                                <input name="userId1" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">用户名:</label>
                             <div class="col-xs-8 ">
-                                <input name="userName" type="text" class="form-control input-sm duiqi" id="name1">
+                                <input name="userName1" type="text" class="form-control input-sm duiqi" id="name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">密码:</label>
                             <div class="col-xs-8">
-                                <input name="userPwd" type="text" class="form-control input-sm duiqi" id="password" >
+                                <input name="userPwd1" type="text" class="form-control input-sm duiqi" id="password" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">性别:</label>
                             <div class="col-xs-8">
-                                <input name="sex" type="text" class="form-control input-sm duiqi" id="sex">
+                                <input name="sex1" type="text" class="form-control input-sm duiqi" id="sex">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">邮箱:</label>
                             <div class="col-xs-8">
-                                <input name="email" type="text" class="form-control input-sm duiqi" id="email">
+                                <input name="email1" type="text" class="form-control input-sm duiqi" id="email">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
-                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone">
+                                <input name="phone1" type="text" class="form-control input-sm duiqi" id="phone">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">图片:</label>
-                            <input name="file" type="file">
+                            <input name="file1" type="file">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >保 存</button>
+                            <input type="button" class="btn btn-xs btn-green" value="保 存" onclick="updateUser()"/>
                         </div>
                     </form>
                 </div>

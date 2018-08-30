@@ -39,7 +39,7 @@
                 $.post(url, args, function (data) {
                     if (data == 'ok') {
                         alert("删除更新成功！");
-                        window.location.reload();
+                        showDish(1);
                     }
                     else {
                         alert("删除失败");
@@ -47,6 +47,72 @@
 
                 });
             }
+        }
+        function updateDish() {
+            // var form=document.getElementById("#form2");
+            var formData = new FormData();
+            formData.append("dishId",$("input[name=dishId1]").val());
+            formData.append("dishName",$("input[name=dishName1]").val());
+            formData.append("dishPric",$("input[name=dishPric1]").val());
+            formData.append("dishDiscribe",$("input[name=dishDiscribe1]").val());
+            formData.append("dishClass",$("input[name=dishClass1]").val());
+            formData.append("restaurId",$("input[name=restaurId1]").val());
+            formData.append("file1",$("input[name=file1]")[0].files[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updateDish",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("更新成功");
+                        $(".modal-backdrop").remove();
+                        showDish(1);
+                    }
+                    else {
+                        alert("修改失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
+        }
+        function insertDish() {
+            var formData = new FormData();
+            formData.append("dishName",$("input[name=dishName]").val());
+            formData.append("dishPric",$("input[name=dishPric]").val());
+            formData.append("dishDiscribe",$("input[name=dishDiscribe]").val());
+            formData.append("dishClass",$("input[name=dishClass]").val());
+            formData.append("restaurId",$("#rid").val());
+            formData.append("file",$("input[name=file]")[0].files[0]);
+            // var formData=new FormData($("#form1")[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/insertDish",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        // $("#addUser").modal("hide");
+                        alert("添加成功！");
+                        // window.location.reload();
+                        $(".modal-backdrop").remove();
+                        showDish(1);
+                    }
+                    else {
+                        alert("添加失败");
+                        showDish(1);
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
         }
     </script>
 </head>
@@ -140,7 +206,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="post" class="form-horizontal" action="${pageContext.request.contextPath}/insertDish" enctype="multipart/form-data">
+                    <form method="post" class="form-horizontal" >
                         <div class="form-group">
                             <label class="col-xs-3 control-label">菜名:</label>
                             <div class="col-xs-8">
@@ -168,9 +234,9 @@
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">餐厅id:</label>
                             <div class="col-xs-8">
-                                <select name="restaurId">
+                                <select name="restaurId" id="rid" >
                                 <c:forEach items="${arr}" var="ar">
-                                    <option>${ar}</option>
+                                    <option value="${ar}">${ar}</option>
                                 </c:forEach>
                                 </select>
                             </div>
@@ -181,7 +247,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >添 加</button>
+                            <input type="button" class="btn btn-xs btn-green" value="添 加" onclick="insertDish()"/>
                         </div>
                     </form>
                 </div>
@@ -201,50 +267,50 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="post" class="form-horizontal" action="${pageContext.request.contextPath}/updateDish" enctype="multipart/form-data">
+                    <form method="post" class="form-horizontal" >
                         <div class="form-group ">
                             <label class="col-xs-3 control-label">菜肴ID:</label>
                             <div class="col-xs-8 ">
-                                <input name="dishId" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
+                                <input name="dishId1" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">菜名:</label>
                             <div class="col-xs-8 ">
-                                <input name="dishName" type="text" class="form-control input-sm duiqi" id="name">
+                                <input name="dishName1" type="text" class="form-control input-sm duiqi" id="name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">类别:</label>
                             <div class="col-xs-8">
-                                <input name="dishClass" type="text" class="form-control input-sm duiqi" id="class" >
+                                <input name="dishClass1" type="text" class="form-control input-sm duiqi" id="class" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">介绍:</label>
                             <div class="col-xs-8">
-                                <input name="dishDiscribe" type="text" class="form-control input-sm duiqi" id="describe">
+                                <input name="dishDiscribe1" type="text" class="form-control input-sm duiqi" id="describe">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">价格:</label>
                             <div class="col-xs-8">
-                                <input name="dishPric" type="text" class="form-control input-sm duiqi" id="pric">
+                                <input name="dishPric1" type="text" class="form-control input-sm duiqi" id="pric">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">餐厅id:</label>
                             <div class="col-xs-8">
-                                <input name="restaurId" type="text" class="form-control input-sm duiqi" id="restaur1" readonly="readonly">
+                                <input name="restaurId1" type="text" class="form-control input-sm duiqi" id="restaur1" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">图片:</label>
-                            <input name="file" type="file">
+                            <input name="file1" type="file">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >保 存</button>
+                            <input type="button" class="btn btn-xs btn-green" value="保 存" onclick="updateDish()"/>
                         </div>
                     </form>
                 </div>

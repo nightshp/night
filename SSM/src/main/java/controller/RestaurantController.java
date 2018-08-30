@@ -22,6 +22,11 @@ public class RestaurantController {
     @Autowired
     private RestaurantService restaurantService;
 
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test(){
+        return "ok";
+    }
     //查询所有餐厅并进行分页
     @RequestMapping("/selectRestaurants")
     public String selectRestaurants(@RequestParam(value = "pn",defaultValue = "1")Integer pn, Model model){
@@ -80,19 +85,20 @@ public class RestaurantController {
     //点击页面的保存修改
     @RequestMapping("/updateRestaur")
     @ResponseBody
-    public String updateRestaur(@ModelAttribute Restaurant restaurant, @RequestParam(value = "file") MultipartFile file) throws IOException {
+    public String updateRestaur( Restaurant restaurant, @RequestParam(value = "file1") MultipartFile file) throws IOException {
         //获取文件名
         String filename=file.getOriginalFilename();
         //开始上传
         file.transferTo(new File("E:/uploads/"+filename));
         restaurant.setRestaurPic(filename);
-        System.out.println(restaurant);
-        restaurantService.updateByPrimaryKey(restaurant);
-        System.out.println("修改成功");
+        if(restaurantService.updateByPrimaryKey(restaurant)>0){
+            return "ok";
+        }
+            return "error";
 //        return "<script>alert('success');window.location.href='./restaurManager';</script>";
 //		return userService.updateUsers(user) > 0 ? "ok" : "error";
 //        return "forward:/restaurManager";
-        return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
+//        return "<script>alert('success');window.location.href='apps/admin/index.jsp';</script>";
     }
     //根据id删除
     @RequestMapping("/deleteRestaur")
@@ -105,14 +111,20 @@ public class RestaurantController {
     }
     //添加餐厅
     @RequestMapping("/insertRestaur")
+    @ResponseBody
     public String insertRestaur(@ModelAttribute Restaurant restaurant, @RequestParam(value = "file") MultipartFile file) throws IOException {
         //获取文件名
+        System.out.println("jjjjj");
         String filename=file.getOriginalFilename();
         //开始上传
+        System.out.println("jjjjjjjjlllllll");
         file.transferTo(new File("E:/uploads/"+filename));
         restaurant.setRestaurPic(filename);
-        restaurantService.insert(restaurant);
-        return "success3";
+        if(restaurantService.insert(restaurant)>0){
+            return "ok";
+        }
+        return "error";
+//        return "success3";
     }
     //根据多字段查询数据
     @RequestMapping("/selectByMany")

@@ -25,6 +25,7 @@ public class OrdersController {
     @RequestMapping("/insertOrder")
     @ResponseBody
     public String insertOrder(Integer userId, Orders orders){
+        System.out.println(orders);
         Address address=addressService.selectDefU(1,userId);
         String send_addr=address.getAreaAddress()+" "+address.getDetaAddress();
         String ordername=address.getRecName();
@@ -33,6 +34,7 @@ public class OrdersController {
         orders.setOrderName(ordername);
 //        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         orders.setOrderStatus(1);
+        System.out.println(orders);
         if(ordersService.insert(orders)>0){
             return "ok";
         }else{

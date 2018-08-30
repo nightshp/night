@@ -28,6 +28,40 @@
                     $("#fee").val(data.fee);
                 }
             });
+            $("#reviseUser").modal("show");
+        }
+        function updateRestaur() {
+            // var form=document.getElementById("#form2");
+            var formData = new FormData();
+            formData.append("restaurId",$("input[name=restaurId1]").val());
+            formData.append("restaurName",$("input[name=restaurName1]").val());
+            formData.append("restaurAddress",$("input[name=restaurAddress1]").val());
+            formData.append("phone",$("input[name=phone1]").val());
+            formData.append("restaurRange",$("input[name=restaurRange1]").val());
+            formData.append("restaurDescribe",$("input[name=restaurDescribe1]").val());
+            formData.append("fee",$("input[name=fee1]").val());
+            formData.append("file1",$("input[name=file1]")[0].files[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/updateRestaur",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        alert("更新成功");
+                        $(".modal-backdrop").remove();
+                        showRestaur(1);
+                    }
+                    else {
+                        alert("修改失败");
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
         }
 
             function deleteRestaur(id) {
@@ -37,41 +71,61 @@
                     $.post(url, args, function (data) {
                         if (data == 'ok') {
                             alert("删除更新成功！");
-                            window.location.reload();
+                            // window.location.reload();
+
+                            showRestaur(1);
                         }
                         else {
                             alert("删除失败");
+                            showRestaur(1);
+
                         }
 
                     });
                 }
             }
-        <%--function insertRestaur() {--%>
-            <%--$.ajax({--%>
-                <%--url:"${pageContext.request.contextPath}/insertRestaur",--%>
-                <%--type:"POST",--%>
-                <%--success:function (data) {--%>
-                    <%--if (data == 'ok') {--%>
-                        <%--alert("添加成功！");--%>
-                        <%--window.location.reload();--%>
-                    <%--}--%>
-                    <%--else {--%>
-                        <%--alert("添加失败");--%>
-                    <%--}--%>
-                <%--},--%>
-                <%--error:function () {--%>
-                    <%--alert("请求错误");--%>
-                <%--}--%>
-            <%--});--%>
-
-        <%--}--%>
+        function insertRestaur() {
+            var formData = new FormData();
+            formData.append("restaurName",$("input[name=restaurName]").val());
+            formData.append("restaurAddress",$("input[name=restaurAddress]").val());
+            formData.append("phone",$("input[name=phone]").val());
+            formData.append("restaurRange",$("input[name=restaurRange]").val());
+            formData.append("restaurDescribe",$("input[name=restaurDescribe]").val());
+            formData.append("fee",$("input[name=fee]").val());
+            formData.append("file",$("input[name=file]")[0].files[0]);
+            // var formData=new FormData($("#form1")[0]);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/insertRestaur",
+                data:formData,
+                type:"POST",
+                async:false,
+                contentType:false,//必须有
+                processData:false,//必须有
+                success:function (data) {
+                    if (data == 'ok') {
+                        // $("#addUser").modal("hide");
+                        alert("添加成功！");
+                        // window.location.reload();
+                        $(".modal-backdrop").remove();
+                        showRestaur(1);
+                    }
+                    else {
+                        alert("添加失败");
+                        showRestaur(1);
+                    }
+                },
+                error:function () {
+                    alert("请求错误");
+                }
+            });
+       }
     </script>
 </head>
 <body>
 <div role="tabpanel" class="tab-pane" id="user">
     <div class="check-div form-inline">
         <div class="col-xs-4" >
-            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加餐厅 </button>
+            <input type="button" class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser" value="添加餐厅 "/>
         </div>
         <%--<form method="post" action="${pageContext.request.contextPath}/selectByMany">--%>
         <div class="col-xs-6">
@@ -102,8 +156,8 @@
                     <td>${res.restaurDescribe}</td>
                     <td>&yen;${res.fee}</td>
                     <td>
-                        <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser" onclick="editRestaur(${res.restaurId})">修改</button>
-                        <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser" onclick="deleteRestaur(${res.restaurId})">删除</button>
+                        <input type="button" class="btn btn-success btn-xs" onclick="editRestaur(${res.restaurId})" value="修改"/>
+                        <button class="btn btn-danger btn-xs"  onclick="deleteRestaur(${res.restaurId})">删除</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -157,7 +211,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="post" class="form-horizontal" action="${pageContext.request.contextPath}/insertRestaur" enctype="multipart/form-data">
+                    <form id="form1" class="form-horizontal">
                         <div class="form-group">
                             <label class="col-xs-3 control-label">餐厅名字:</label>
                             <div class="col-xs-8 ">
@@ -200,7 +254,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >添 加</button>
+                            <input type="button" class="btn btn-xs btn-green" onclick="insertRestaur()" value="添 加"/>
                         </div>
                     </form>
                 </div>
@@ -220,56 +274,56 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form method="post" class="form-horizontal" action="${pageContext.request.contextPath}/updateRestaur" enctype="multipart/form-data">
+                    <form id="form2" class="form-horizontal" method="post">
                         <div class="form-group ">
                             <label class="col-xs-3 control-label">ID:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurId" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
+                                <input name="restaurId1" type="text" class="form-control input-sm duiqi" id="id" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">餐厅名字:</label>
                             <div class="col-xs-8 ">
-                                <input name="restaurName" type="text" class="form-control input-sm duiqi" id="name">
+                                <input name="restaurName1" type="text" class="form-control input-sm duiqi" id="name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">地址:</label>
                             <div class="col-xs-8">
-                                <input name="restaurAddress" type="text" class="form-control input-sm duiqi" id="address" >
+                                <input name="restaurAddress1" type="text" class="form-control input-sm duiqi" id="address" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">电话:</label>
                             <div class="col-xs-8">
-                                <input name="phone" type="text" class="form-control input-sm duiqi" id="phone1">
+                                <input name="phone1" type="text" class="form-control input-sm duiqi" id="phone1">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">送餐范围:</label>
                             <div class="col-xs-8">
-                                <input name="restaurRange" type="text" class="form-control input-sm duiqi" id="range">
+                                <input name="restaurRange1" type="text" class="form-control input-sm duiqi" id="range">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">描述:</label>
                             <div class="col-xs-8">
-                                <input name="restaurDescribe" type="text" class="form-control input-sm duiqi" id="describe">
+                                <input name="restaurDescribe1" type="text" class="form-control input-sm duiqi" id="describe">
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-xs-3 control-label">配送费:</label>
                             <div class="col-xs-8">
-                                <input name="fee" type="text" class="form-control input-sm duiqi" id="fee">
+                                <input name="fee1" type="text" class="form-control input-sm duiqi" id="fee">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label">图片:</label>
-                                <input name="file" type="file">
+                                <input name="file1" type="file">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                            <button type="submit" class="btn btn-xs btn-green" >保 存</button>
+                            <input type="button" class="btn btn-xs btn-green" value="保 存" onclick="updateRestaur()" />
                         </div>
                     </form>
                 </div>

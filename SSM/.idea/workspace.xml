@@ -56,10 +56,10 @@
     <session id="973980276">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="40" />
+          <entry key="project.closed" value="43" />
           <entry key="project.open.time.1" value="6" />
           <entry key="project.open.time.16" value="1" />
-          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.18" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.22" value="1" />
@@ -68,10 +68,11 @@
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="3" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.43" value="1" />
-          <entry key="project.open.time.44" value="3" />
+          <entry key="project.open.time.44" value="4" />
           <entry key="project.open.time.45" value="3" />
           <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.47" value="3" />
@@ -80,19 +81,20 @@
           <entry key="project.open.time.50" value="1" />
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.54" value="2" />
+          <entry key="project.open.time.62" value="1" />
           <entry key="project.open.time.74" value="1" />
-          <entry key="project.opened" value="41" />
+          <entry key="project.opened" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="5" />
+          <entry key="class" value="6" />
           <entry key="css" value="78" />
           <entry key="html" value="6" />
-          <entry key="java" value="329" />
+          <entry key="java" value="336" />
           <entry key="jpg" value="6" />
           <entry key="js" value="25" />
-          <entry key="jsp" value="319" />
+          <entry key="jsp" value="338" />
           <entry key="order" value="1" />
           <entry key="png" value="3" />
           <entry key="properties" value="5" />
@@ -104,13 +106,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="5" />
+          <entry key="CLASS" value="6" />
           <entry key="CSS" value="78" />
           <entry key="Database Element" value="11" />
           <entry key="HTML" value="6" />
           <entry key="Image" value="9" />
-          <entry key="JAVA" value="329" />
-          <entry key="JSP" value="319" />
+          <entry key="JAVA" value="336" />
+          <entry key="JSP" value="338" />
           <entry key="JavaScript" value="25" />
           <entry key="Properties" value="5" />
           <entry key="RNG Compact" value="13" />
@@ -123,9 +125,9 @@
           <entry key="css" value="197" />
           <entry key="dummy" value="16" />
           <entry key="html" value="12" />
-          <entry key="java" value="11161" />
+          <entry key="java" value="11451" />
           <entry key="js" value="453" />
-          <entry key="jsp" value="10608" />
+          <entry key="jsp" value="11221" />
           <entry key="properties" value="138" />
           <entry key="txt" value="8" />
           <entry key="xml" value="2021" />
@@ -135,8 +137,8 @@
         <counts>
           <entry key="CSS" value="197" />
           <entry key="HTML" value="12" />
-          <entry key="JAVA" value="11161" />
-          <entry key="JSP" value="10608" />
+          <entry key="JAVA" value="11451" />
+          <entry key="JSP" value="11221" />
           <entry key="JavaScript" value="453" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="Properties" value="138" />
@@ -176,6 +178,9 @@
       <find>nav</find>
       <find>session</find>
       <find>section</find>
+      <find>deleteUser</find>
+      <find>userName</find>
+      <find>restaurId</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,8 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/config/bean.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/admin/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/admin/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/login.jsp" />
@@ -206,8 +209,6 @@
         <option value="$PROJECT_DIR$/src/main/java/service/IOrdersService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/impl/OrdersService.java" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/ordermanager.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/restaurmanager.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/showRestaur.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/showorder.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/showuser.jsp" />
@@ -216,25 +217,29 @@
         <option value="$PROJECT_DIR$/src/main/java/service/IMenuService.java" />
         <option value="$PROJECT_DIR$/src/main/config/mapper/MenuMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/showdish.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/dishmanager.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/RestaurantController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/usermanager.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/entity/Orders.java" />
         <option value="$PROJECT_DIR$/src/main/config/mapper/OrdersMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/OrdersController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/head1.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/controller/AddressController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/address.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/book.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/user.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/userinfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/app/showRestaur.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/app/orders.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/showRestaur.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/OrdersController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/shopcar.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/afterapp/repwd.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/RestaurantController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/restaurmanager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/ordermanager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/usermanager.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/apps/admin/dishmanager.jsp" />
       </list>
     </option>
   </component>
@@ -277,6 +282,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,6 +314,22 @@
               <item name="SSM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -323,21 +346,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535441738654" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535552307722" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -540,6 +562,10 @@
       <workItem from="1535289905908" duration="296000" />
       <workItem from="1535290534325" duration="2495000" />
       <workItem from="1535420041035" duration="17413000" />
+      <workItem from="1535449314648" duration="5868000" />
+      <workItem from="1535508845840" duration="641000" />
+      <workItem from="1535524165740" duration="17686000" />
+      <workItem from="1535590974573" duration="624000" />
     </task>
     <servers />
   </component>
@@ -576,13 +602,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345441000" />
+    <option name="totallyTimeSpent" value="370260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49338374" visible="true" weight="0.25020176" />
-      <window_info id="Structure" order="1" sideWeight="0.50363636" side_tool="true" weight="0.20984665" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49168646" visible="true" weight="0.26553673" />
+      <window_info id="Structure" order="1" sideWeight="0.50831354" side_tool="true" weight="0.26150122" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -591,7 +617,7 @@
       <window_info id="Web" order="7" sideWeight="0.50661623" side_tool="true" weight="0.27683616" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.16" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959645" weight="0.26545453" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959645" weight="0.32909092" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -658,40 +684,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/IUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="29" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/OrdersService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/bootstrap-select.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/bootstrap-select.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ShopcarController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -713,13 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/restaurmanager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="77" column="105" selection-start-line="77" selection-start-column="105" selection-end-line="77" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/config/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -734,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/ordermanager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="41" column="113" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/MenuService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -752,13 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="56" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/dishmanager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="61" column="107" selection-start-line="61" selection-start-column="107" selection-end-line="61" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -797,41 +768,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/success3.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="164" column="87" selection-start-line="164" selection-start-column="87" selection-end-line="164" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/usermanager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="244" column="18" selection-start-line="244" selection-start-column="18" selection-end-line="244" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/RestaurantController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="94" column="83" selection-start-line="94" selection-start-column="83" selection-end-line="94" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/OrdersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/config/mapper/OrdersMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
@@ -879,22 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-          <folding>
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1299#1300#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#1391#1392#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2705">
-          <caret line="176" lean-forward="true" selection-start-line="176" selection-end-line="176" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -926,20 +843,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-124">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/book.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#td#8;n#tr#1;n#table#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -962,34 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/address.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2750">
-          <caret line="79" column="58" lean-forward="true" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#td#5;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/userinfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#3;n#ul#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/app/showRestaur.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -1004,13 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/restaurants.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="25" column="142" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="142" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/showRestaur.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1022,9 +894,148 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/success.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/success1.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/OrdersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/repwd.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="84" column="56" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/shopcar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#span#0;n#div#0;n#div#1;n#div#0;n#li#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/success3.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1848">
+          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/address.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="76" column="28" lean-forward="true" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/restaurants.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/javax/servlet/http/HttpServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/RestaurantController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="87" column="84" selection-start-line="87" selection-start-column="84" selection-end-line="87" selection-end-column="84" />
+          <folding>
+            <element signature="e#878#879#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/afterapp/userinfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/ordermanager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1232">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/restaurmanager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2072">
+          <caret line="110" column="21" lean-forward="true" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/usermanager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="169" column="83" selection-start-line="169" selection-start-column="83" selection-end-line="169" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/apps/admin/dishmanager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="116" column="58" selection-start-line="116" selection-start-column="58" selection-end-line="116" selection-end-column="58" />
         </state>
       </provider>
     </entry>

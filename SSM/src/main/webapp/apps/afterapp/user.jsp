@@ -17,17 +17,7 @@
            userHtml();
         });
         $("#shopcar").click(function(){
-            $.ajax({
-                type:"GET",
-                url:"${pageContext.request.contextPath}/selectShops?userId=${logUser.userId}",
-                dataType:"html",
-                async:true,
-                contentType:"application/json",
-                success:function(result){
-                    $("#show_myinfo").empty();
-                    $("#show_myinfo").html(result);
-                }
-            });
+           shopcarHtml();
         });
         $("#repwd").click(function(){
             $.ajax({
@@ -88,6 +78,19 @@
             }
         });
     }
+  function shopcarHtml() {
+      $.ajax({
+          type:"GET",
+          url:"${pageContext.request.contextPath}/selectShops?userId=${logUser.userId}",
+          dataType:"html",
+          async:true,
+          contentType:"application/json",
+          success:function(result){
+              $("#show_myinfo").empty();
+              $("#show_myinfo").html(result);
+          }
+      });
+  }
 </script>
 </head>
 
